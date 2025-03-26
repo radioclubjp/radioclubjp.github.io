@@ -8,7 +8,7 @@ categories: math
 
 # Introduction
 
-This post concerns the signature homomorphism. I think the signature homomorphism might be one of the most underappreciated objects in mathematics. I hope the reader will agree after they finish reading this post.
+The signature homomorphism is one of the most beautiful and miraculous objects in mathematics. Its existence is a miracle explained by what we will call the fundamental fact. This post explores the meaning of the signature homomorphism, the fundamental fact and ways to prove it.
 
 # Motivation
 
@@ -44,6 +44,25 @@ In the above paragraph we gave one way to express a permutation as a product of 
 
 The mystery and the fundamental fact that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We call this claim the **fundamental fact** in the context of this essay (it's not actually called that way in mathematics).
 
-Perhaps the reader immediately grasps why the fundamental fact must necessarily be true.If that's the case, then I should not recommend they continue reading this essay, since it's my attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive. This essay is 
+Perhaps the reader immediately grasps why the fundamental fact must necessarily be true. If that's the case, then the author should not recommend they continue reading this essay, since it consists of an attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive, as well as explore different ways to prove the fundamental fact. 
 
+# Applications of the fundamental fact and the signature homomorphism
+
+In this section we will assume the fundamental fact to be true and the signature homomorphism to be well defined. We will discuss ways to prove it in later sections.
+Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
+
+\begin{equation}
+\rho(\sigma_1 \sigma_2) = \rho(\sigma_1) \rho(\sigma_2)
+\label{eq:signature-hom}
+\end{equation}
+
+$\rho$ can be used to define the determinant. Let $R$ be a commutative ring. If the reader is not familiar with the term, they are free to take $R$ to be equal to the set of rational numbers $\mathbb{Q}$ or the set of real numbers $\mathbb{R}$ or the set of complex numbers $\mathbb{C}$, as these are all common examples of commutative rings.
+
+Fix $n \in \mathbb{N}$ and let $V = R^n$ be the free $R$-module of rank $n$. It's the space of tuples of elements of $R$, written $(r_i)= (r_1,\ldots,r_n),  \ r_i \in R$. Elements in $V$ may be added together:
+
+$$(r_1,\ldots, r_n )+ (t_1, \ldots, t_n) = (r_1 + t_1, \ldots, r_n + t_n)$$
+
+and multiplied by an element $a \in R$:
+
+$$ a (r_1, \ldots, r_n) = (ar_1, \ldots, ar_n)$$
 
