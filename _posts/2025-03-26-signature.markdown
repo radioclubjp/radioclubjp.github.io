@@ -121,7 +121,7 @@ Thus the existence of the determinant implies the fundamental fact as well as th
 
 How about the other way around? Does the existence of the signature homomorphism imply the existence of the determinant?
 
-Consider $n$ arbitrary vectors $(v_i)_{i=1}^n$, each expressed in terms of the basis as $v_i = \sum_j a_{ij} e_j \in V$, $(a_{ij}) \in R$.
+Consider $n$ arbitrary vectors $ (v_i)_{i=1}^n$ , each expressed in terms of the basis as $v_i = \sum_j a_{ij} e_j \in V$, $(a_{ij}) \in R$.
 
 
 $$
