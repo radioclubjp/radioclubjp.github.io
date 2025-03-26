@@ -66,9 +66,10 @@ If we have such a decomposition, suppose that the identity lies in $A$. If it li
 Here's an example of such a partition of the graph of $S_3$. The group $A$ is shown on the left and the group $B$ is shown on the right.
 
 
-<div class="large-svg-container">
+<div class="large-svg-container" style="margin-bottom: 4rem;margin-top: 4rem;">
   {% include k33graph.svg %}
 </div>
+
 
 
 # Determinants
@@ -121,8 +122,12 @@ Thus the existence of the determinant implies the fundamental fact as well as th
 
 How about the other way around? Does the existence of the signature homomorphism imply the existence of the determinant?
 
-Consider $n$ arbitrary vectors $ (v_i)_{i=1}^n$ , each expressed in terms of the basis as $v_i = \sum_j a_{ij} e_j \in V$, $(a_{ij}) \in R$.
+Consider n arbitrary vectors 
+$ (v_{i})_{i=1}^{n} $ , each expressed in terms of the basis as 
 
+$$v_i = \sum_{j} a_{ij} e_j \in V$$
+
+with $(a_{ij}) \in R$. Then
 
 $$
 \begin{array}{rl}
