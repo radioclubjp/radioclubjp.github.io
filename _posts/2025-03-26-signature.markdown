@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A little something about the signature homomorphism"
+title:  "Parity of permutations"
 date:   2025-03-26 1:00:22 +0200
 categories: math
 ---
@@ -20,7 +20,7 @@ Let's start with a simple problem.
 
 This is trivially impossible when you have only one box: there's nothing to switch. It's also impossible with two boxes: there are only two possible positions and a move must switch between the two. The positions correspond exactly to whether the light is on or off. What about three boxes? Do you understand intuitively why it's true for 3 boxes? What about 5 boxes?
 
-A reader lacking in imagination will benefit from trying the interactive version of the game with five boxes below (credit to Claude 3.7 Sonnet).
+The reader might benefit from trying the interactive version of the game with five boxes below (credit to Claude 3.7 Sonnet).
 
 {% include signature-game.html %}
 
@@ -29,7 +29,7 @@ If you're anything like me and have a background in basic group theory and linea
 # Basic defintions
 
 The signature homomorphism is a function $\rho: S_n \to C_2$.
-$S_n$ is the group of all permutations of the set $\{1,\ldots, n\} \subset \mathbb{N}$ . $C_2$ is the cyclic group of order two which may be regarded as the set $\{-1, 1\}$ under multiplication. 
+$S_n$ is the group of all permutations of the set $[n] := \{1,\ldots, n\} \subset \mathbb{N}$ . $C_2$ is the cyclic group of order two which may be regarded as the set $\{-1, 1\}$ under multiplication. 
 
 It is defined as follows. Suppose you have a permutation $\sigma \in S_n$. Then we can express it as a product of **transpositions** (permutations which switch two elements and leave all other elements fixed), say $\sigma = \tau_1 \ldots \tau_k$ where each $\tau_i \in S_n$ is a transposition. We also accept the situation where the number of factors is $k=0$ and $\sigma = 1$ (the identity permutation).
 
@@ -47,6 +47,22 @@ In the above paragraph we gave one way to express a permutation as a product of 
 The mystery and the fundamental fact that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We call this claim the **fundamental fact** in the context of this essay (it's not actually called that way in mathematics).
 
 Perhaps the reader immediately grasps why the fundamental fact must necessarily be true. If that's the case, then the author should not recommend they continue reading this essay, since it consists of an attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive, as well as explore different ways to prove the fundamental fact. 
+
+## Another way to think of the fundamental fact
+
+One way to look at the fundamental fact is as follows. For each $S_n$ we construct a graph. The vertices consist of permutations of $[n]$, i.e. the elements of $S_n$. Two permutations are connected by an edge if they differ by a transposition. That is, for two bijections $\sigma_1, \sigma_2 :[n] \to [n]$, there is an edge $(\sigma_1 \sigma_2)$ if there is a transposition $\tau \in S_n$ such that $\sigma_2 = \tau \sigma_1$. The edges don't need to have a direction since the relation is symmetric: as $\tau$ is a transposition, we have $\tau^2 = 1$ so $\tau \sigma_2 = \tau \tau \sigma_1 = \tau^2 \sigma_1 = 1\sigma_1  = \sigma_1$.
+
+The fundamental fact then can be restated as follows. The graph of each $S_n$ can be divided into two nonempty groups of vertices $A$ and $B$ such that no two vertices in the same group are connected by an edge. That is, each edge in the graph connects a vertex in $A$ with a vertex in $B$.
+
+If we have such a decomposition, suppose that the identity lies in $A$. If it lies in $B$, we switch the names of the groups. Then the signature of a permutation well defined: it's even when the permutation lies in $A$ and odd when it lies in $B$. It is then impossible for a permutation to be expressible as a product of both an even and an odd number of transpositions. That is because if a permutation is a product of $n$ transpositions, that means that to get to the permutation, you have to walk in the graph along $n$ edges. But since each edge you walk switches the group, that means the group you end up in is only a matter of the parity of the number of factors.
+
+Here's an example of such a partition of the graph of $S_3$. The group $A$ is shown on the left and the group $B$ is shown on the right.
+
+
+<div class="large-svg-container">
+  {% include k33graph.svg %}
+</div>
+
 
 # Applications of the fundamental fact and the signature homomorphism
 
