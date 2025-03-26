@@ -12,7 +12,7 @@ The signature homomorphism is one of the most beautiful and miraculous objects i
 
 # Motivation
 
-<img src="/assets/BoxGame.png" alt="box game" width="600"/>
+<img src="/assets/BoxGame2.png" alt="box game" width="600"/>
 
 Let's start with a simple problem.
 
