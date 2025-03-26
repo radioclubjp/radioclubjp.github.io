@@ -12,7 +12,7 @@ The signature homomorphism is one of the most beautiful and miraculous objects i
 
 # Motivation
 
-![Box game](/assets/BoxGame.png)
+<img src="/assets/BoxGame.png" alt="box game" width="600"/>
 
 Let's start with a simple problem.
 
@@ -26,7 +26,7 @@ The reader might benefit from trying the interactive version of the game with fi
 
 If you're anything like me and have a background in basic group theory and linear algebra, your mind probably immediately goes towards the signature homomorphism. In fact the set up of the problem corresponds almost exactly to the set up of the signature homomorphism. 
 
-# Basic defintions
+# Basic definitions
 
 The signature homomorphism is a function $\rho: S_n \to C_2$.
 $S_n$ is the group of all permutations of the set $[n] := \{1,\ldots, n\} \subset \mathbb{N}$ . $C_2$ is the cyclic group of order two which may be regarded as the set $\{-1, 1\}$ under multiplication. 
@@ -110,3 +110,20 @@ $$
 
 thus $f(a,b) = -f(b,a)$. That means that in the determinant, if you switch the places of two values, you get the same value except multiplied by $-1$.
 
+This property is very closely related to the signature homomorphism. In fact, by applying a series of permutations to the arguments in $\det(e_1, \ldots, e_n)$, by looking at the sign of the final result, we can read off the sign of the permutation. In fact, we can even define the signature homomorphism $\rho$ in this way:
+
+if $\sigma : [n] \to [n]$ is a permutation in $S_n$, then we define 
+
+$$
+\rho(\sigma) = 
+\begin{cases}
+1 & \text{if } \det(e_{\sigma(1)}, \ldots, e_{\sigma(n)} ) = \det(e_1, \ldots, e_n) \\
+-1  & \text{if }  \det(e_{\sigma(1)}, \ldots, e_{\sigma(n)} ) = -\det(e_1, \ldots, e_n) 
+\end{cases}
+$$
+
+Thus the existence of the determinant implies the fundamental fact as well as the existence of the signature homomorphism.
+
+How about the other way around? Does the existence of the signature homomorphism imply the existence of the determinant?
+
+Keep in mind, while we have 
