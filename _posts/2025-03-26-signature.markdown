@@ -44,6 +44,13 @@ To see that each permutation can be expressed as a product of transpositions, co
 
 In the above paragraph we gave one way to express a permutation as a product of transpositions. But that is by no means the only way to do so. Consider, for example, the fact that the identity permutation is expressible as a product of two transpositions $1 = (12)(12)$ as well as the product of zero transpositions, which is the identity. Here $(a \  b)$ for $a\neq b$ stands for the transposition which maps $a\to b$ and $b\to a$ and leaves other numbers fixed.
 
+Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
+
+\begin{equation}
+\rho(\sigma_1 \sigma_2) = \rho(\sigma_1) \rho(\sigma_2)
+\label{eq:signature-hom}
+\end{equation}
+
 The mystery and the fundamental fact that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We call this claim the **fundamental fact** in the context of this essay (it's not actually called that way in mathematics).
 
 Perhaps the reader immediately grasps why the fundamental fact must necessarily be true. If that's the case, then the author should not recommend they continue reading this essay, since it consists of an attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive, as well as explore different ways to prove the fundamental fact. 
@@ -65,14 +72,6 @@ Here's an example of such a partition of the graph of $S_3$. The group $A$ is sh
 
 
 # Determinants
-
-In this section we explore the relationship the fundamental fact to be true and the signature homomorphism to be well defined. We will discuss ways to prove it in later sections.
-Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
-
-\begin{equation}
-\rho(\sigma_1 \sigma_2) = \rho(\sigma_1) \rho(\sigma_2)
-\label{eq:signature-hom}
-\end{equation}
 
 $\rho$ can be used to define the determinant. Let $R$ be a commutative ring. If the reader is not familiar with the term, they are free to take $R$ to be equal to the set of rational numbers $\mathbb{Q}$ or the set of real numbers $\mathbb{R}$ or the set of complex numbers $\mathbb{C}$, as these are all common examples of commutative rings.
 
@@ -145,3 +144,12 @@ $$
 
 
 The last expression is referred to as the Leibniz expansion of the determinant and is often taken as the definition of the determinant.
+
+
+# Elementary proofs of the fundamental fact
+
+There are a number of different popular elementary proofs of the fundamental fact in the literature. We present a few of them in this chapter. They are not hard proofs. However, they are not very natural and have the unfortunate appearance of being rather technical and not very illuminating. That is not to say they aren't valid proofs: they're completely valid. However, later I will present what I think is a better and a more natural proof, which is the main motivating reason behind the article.
+
+## Proofs using counting orbits
+
+Permutations decompose the set $[n]$ into **orbits**. An orbit is just 
