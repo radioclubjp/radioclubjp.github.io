@@ -10,7 +10,7 @@ categories: math
 
 This post concerns the signature homomorphism. I think the signature homomorphism might be one of the most underappreciated objects in mathematics. I hope the reader will agree after they finish reading this post.
 
-## Motivation
+# Motivation
 
 Let's start with a simple problem.
 
