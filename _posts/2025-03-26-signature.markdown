@@ -64,9 +64,9 @@ Here's an example of such a partition of the graph of $S_3$. The group $A$ is sh
 </div>
 
 
-# Applications of the fundamental fact and the signature homomorphism
+# Determinants
 
-In this section we will assume the fundamental fact to be true and the signature homomorphism to be well defined. We will discuss ways to prove it in later sections.
+In this section we explore the relationship the fundamental fact to be true and the signature homomorphism to be well defined. We will discuss ways to prove it in later sections.
 Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
 
 \begin{equation}
@@ -108,22 +108,40 @@ $$
 \end{array}
 $$
 
-thus $f(a,b) = -f(b,a)$. That means that in the determinant, if you switch the places of two values, you get the same value except multiplied by $-1$.
+thus $f(a,b) = -f(b,a)$. That means that if in the determinant you switch the places of two arguments, you get the same value except multiplied by $-1$.
 
 This property is very closely related to the signature homomorphism. In fact, by applying a series of permutations to the arguments in $\det(e_1, \ldots, e_n)$, by looking at the sign of the final result, we can read off the sign of the permutation. In fact, we can even define the signature homomorphism $\rho$ in this way:
 
 if $\sigma : [n] \to [n]$ is a permutation in $S_n$, then we define 
 
 $$
-\rho(\sigma) = 
-\begin{cases}
-1 & \text{if } \det(e_{\sigma(1)}, \ldots, e_{\sigma(n)} ) = \det(e_1, \ldots, e_n) \\
--1  & \text{if }  \det(e_{\sigma(1)}, \ldots, e_{\sigma(n)} ) = -\det(e_1, \ldots, e_n) 
-\end{cases}
+\det(e_{\sigma(1)}, \ldots, e_{\sigma(n)} ) = \rho(\sigma) \det(e_1, \ldots, e_n)
 $$
 
 Thus the existence of the determinant implies the fundamental fact as well as the existence of the signature homomorphism.
 
 How about the other way around? Does the existence of the signature homomorphism imply the existence of the determinant?
 
-Keep in mind, while we have 
+Consider $n$ arbitrary vectors $(v_i)_{i=1}^n$, each expressed in terms of the basis as $v_i = \sum_j a_{ij} e_j \in V$, $(a_{ij}) \in R$.
+
+
+$$
+\begin{array}{rl}
+\det(v_1, \ldots, v_n) &= \det(\sum_j a_{1j} e_j, \ldots , \sum_j a_{nj} e_j) \\
+&= \sum_{1 \leq i_1, \ldots, i_n \leq n} \det(a_{1i_1} e_{i_1}, \ldots, a_{ni_n} e_{i_n})  &\text{by multilinearity of det} \\
+&= \sum_{1 \leq i_1, \ldots, i_n \leq n} a_{1i_1}\ldots a_{ni_n} \det(e_{i_1}, \ldots, e_{i_n})  &\text{also by multilinearity} \\
+\end{array}
+$$
+
+Now by property 1 of the determinant, if in a term some $i_j = i_k$ for $i \neq k$, then $\det(e_{i_1}, \ldots, e_{i_n}) = 0$. So the only nonzero terms in the sum above are the terms where all the indices $(i_j)_j$ are distinct. This happens exactly when $j \mapsto i_j$ defines a permutation of $[n]$. Thus the sum reduces to the sum over all permutations of $S_n$, which is equal to
+
+$$
+\begin{array}{rl}
+\sum_{\sigma \in S_n} a_{1\sigma(1)}\ldots a_{n\sigma(n)} \det(e_{\sigma(1)}, \ldots, e_{\sigma(n)}) 
+&= \sum_{\sigma \in S_n} \rho(\sigma) a_{1\sigma(1)}\ldots a_{n\sigma(n)} \underbrace{\det(e_1, \ldots, e_n)}_{=1} \\
+&= \sum_{\sigma \in S_n} \rho(\sigma) a_{1\sigma(1)}\ldots a_{n\sigma(n)} 
+\end{array}
+$$
+
+
+The last expression is referred to as the Leibniz expansion of the determinant and is often taken as the definition of the determinant.
