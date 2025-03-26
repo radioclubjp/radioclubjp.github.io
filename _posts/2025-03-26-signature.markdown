@@ -66,9 +66,7 @@ If we have such a decomposition, suppose that the identity lies in $A$. If it li
 Here's an example of such a partition of the graph of $S_3$. The group $A$ is shown on the left and the group $B$ is shown on the right.
 
 
-<div class="large-svg-container" style="margin-bottom: 4rem;margin-top: 4rem;">
-  {% include k33graph.svg %}
-</div>
+  <img src="/assets/k33graph.svg" alt="K3,3" width="70%" height="auto" style="display: block;margin-bottom: 4rem;margin-top: 4rem; margin-left: auto; margin-right: auto;">
 
 
 
@@ -157,4 +155,17 @@ There are a number of different popular elementary proofs of the fundamental fac
 
 ## Proofs using counting orbits
 
-Permutations decompose the set $[n]$ into **orbits**. An orbit is just 
+Permutations decompose the set $[n]$ into **orbits**. To understand orbits, we look at a permutation $\sigma: [n] \to [n]$ as an action which takes a box in the position $i$ and moves it to position $\sigma(i)$ for all $i\in [n]$.
+We repeat this action many times and look at the set of positions that each box takes until it returns back to its original place. Such sets are called orbits.
+
+For example, take $n=5$ and consider the permutation that consists of moving each box one position to the right except the last box, which goes to the front. The box in position 1 moves to position 2, then 3, then 4, then 5, then back to 1. Thus there is a single orbit, which is the whole set of positions.
+
+As another example, consider the permutation which switches the positions of the first two boxes and leaves the other three boxes alone. Then box 1 moves to position 2, then back to position 1. That's an orbit. Boxes 3,4,5 always stay in their own place, giving us three more orbits. So in total there are four orbits.
+
+We consider what happens to the number of orbits of a permutation after we compose the permutation with a transposition. We do that by considering two different cases.
+
+First, consider the case where the two positions (say i and j) being transposed lie in different orbits. What happens is that all the other elements in the two orbits continue moving in much the same way, except when it's time to move to i, the box jumps to position j instead, and vice versa. The result of this is that the two orbits get stitched together and joined into one bigger orbit.
+
+One may think of the two orbits in terms of two disconnected directed cycles. The effect on the graph of composing the permutation with a transposition is taking an edge in one cycle (possibly self-directed if the cycle has size one) that's directed towards i and redirecting it towards j in the other cycle. And vice versa with j. 
+
+<img src="/assets/orbits.svg" alt="Two directed cycles with redirected edges" width="70%" height="auto" style="display: block; margin: 0 auto;">
