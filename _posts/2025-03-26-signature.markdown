@@ -12,13 +12,15 @@ The signature homomorphism is one of the most beautiful and miraculous objects i
 
 # Motivation
 
+![Box game](/assets/BoxGame.png)
+
 Let's start with a simple problem.
 
 > Suppose you have $n$ boxes arranged in a row and labeled $1, 2, \ldots, n$. You are playing a game. An allowed move consists of picking two boxes and switching their positions. There's a catch - next to you there is a light. Initially the light starts off but each time you switch two boxes the light switches its state on $\to$ off and off $\to $ on. Your task: arrange a series of moves such that after performing them, the boxes are all back to their original positions, yet the light is on.
 
 This is trivially impossible when you have only one box: there's nothing to switch. It's also impossible with two boxes: there are only two possible positions and a move must switch between the two. The positions correspond exactly to whether the light is on or off. What about three boxes? Do you understand intuitively why it's true for 3 boxes? What about 5 boxes?
 
-A reader lacking in imagination will benefit from trying the interactive version of the game with five boxes below (credit: Claude 3.7 Sonnet).
+A reader lacking in imagination will benefit from trying the interactive version of the game with five boxes below (credit to Claude 3.7 Sonnet).
 
 {% include signature-game.html %}
 
@@ -58,11 +60,37 @@ Besides being a function, the signature homomorphism $\rho$ also has the special
 
 $\rho$ can be used to define the determinant. Let $R$ be a commutative ring. If the reader is not familiar with the term, they are free to take $R$ to be equal to the set of rational numbers $\mathbb{Q}$ or the set of real numbers $\mathbb{R}$ or the set of complex numbers $\mathbb{C}$, as these are all common examples of commutative rings.
 
-Fix $n \in \mathbb{N}$ and let $V = R^n$ be the free $R$-module of rank $n$. It's the space of tuples of elements of $R$, written $(r_i)= (r_1,\ldots,r_n),  \ r_i \in R$. Elements in $V$ may be added together:
+Fix $n \in \mathbb{N}$ and let $V = R^n$ be the free $R$-module of rank $n$. That is, the space of n-tuples of elements of $R$, written $(r_i)= (r_1,\ldots,r_n) \in R^n,  \ r_i \in R$. Elements in $V$ may be added together:
 
 $$(r_1,\ldots, r_n )+ (t_1, \ldots, t_n) = (r_1 + t_1, \ldots, r_n + t_n)$$
 
 and multiplied by an element $a \in R$:
 
 $$ a (r_1, \ldots, r_n) = (ar_1, \ldots, ar_n)$$
+
+The space has a natural choice for a basis $e_i \in V$ where each $e_i$ is a n-tuple which has component $1$ in the $i$'th place and $0$ in every other place. Thus every $(r_i) \in V$ may be expressed as
+
+$$(r_i) = \sum_{i=1}^{n}r_ie_i$$
+
+The determinant is a multilinear map (that is, a map that is linear in every argument when keeping the other arguments fixed)
+
+$$\det: V^n \to R$$
+
+uniquely defined by the following two properties:
+
+1.  $\det(v_1,\ldots, v_n) = 0$ if any $v_i = v_j$ for $i \neq j$. I.e. it's antisymmetric.
+2. $\det(e_1,\ldots, e_n) = 1$
+
+The reason why the first property has to do with antisymmetry is simple. For if in the expression $\det(v_1, \ldots, v_n)$, for $i < j$ we make the substitutions $v_i = a+b$ and  $v_j = a+b$ and letting $f(a,b)$ be the corresponding determinant with these substitutions, we find that 
+
+$$
+\begin{array}{rl}
+0 &= f(a+b, a+b) \quad \tag{by property 1} \\[1em]
+&= f(a+b, a) + f(a+b, b) \\[1em]
+&= \underbrace{f(a, a)}_{= 0} + f(a,b) + f(b,a) + \underbrace{f(b, b)}_{= 0} \\
+&= f(a,b) + f(b,a)
+\end{array}
+$$
+
+thus $f(a,b) = -f(b,a)$. That means that in the determinant, if you switch the places of two values, you get the same value except multiplied by $-1$.
 
