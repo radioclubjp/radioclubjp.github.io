@@ -12,8 +12,6 @@ The signature homomorphism is one of the most beautiful and miraculous objects i
 
 # Motivation
 
-<img src="/assets/BoxGame2.png" alt="box game" width="600"/>
-
 Let's start with a simple problem.
 
 > Suppose you have $n$ boxes arranged in a row and labeled $1, 2, \ldots, n$. You are playing a game. An allowed move consists of picking two boxes and switching their positions. There's a catch - next to you there is a light. Initially the light starts off but each time you switch two boxes the light switches its state on $\to$ off and off $\to $ on. Your task: arrange a series of moves such that after performing them, the boxes are all back to their original positions, yet the light is on.
@@ -99,7 +97,7 @@ The reason why the first property has to do with antisymmetry is simple. For if 
 
 $$
 \begin{array}{rl}
-0 &= f(a+b, a+b) \quad \tag{by property 1} \\[1em]
+0 &= f(a+b, a+b) \quad \text{by property 1} \\[1em]
 &= f(a+b, a) + f(a+b, b) \\[1em]
 &= \underbrace{f(a, a)}_{= 0} + f(a,b) + f(b,a) + \underbrace{f(b, b)}_{= 0} \\
 &= f(a,b) + f(b,a)
@@ -182,4 +180,74 @@ The author of this post previously thought it was unavoidable that in a treatmen
 
 ## Tensor products
 
-Let $M,N$ be $R$-modules for a commutative ring $R$. 
+In this section we will define and give reason to believe in some basic properties of tensor products. The approach taken in this section is not standard and reflect the tastes of the author. The reason for this divergence will be explained later. The reader already familiar with tensor products and their properties may safely skip this section as the relevance of the divergence from the standard presentation does not extend beyond the section.
+
+Let $M,N$ be $R$-modules for a commutative ring $R$. Let $T$ be another $R$-module and consider a general bilinear (that is, linear in each argument map) $f: M \times N \to T$. That is, a function of two arguments $f(m,n)$ such that 
+
+$$
+\begin{array}{rl}
+f(am_1 + bm_2, n) &= af(m_1, n) + bf(m_2, n) \\
+f(m, an_1 + bn_2) &= af(m,n_1) + bf(m, n_2)
+\end{array}
+$$
+
+Bilinear maps are more complicated than linear maps (i.e. homomorphisms). We want to treat it as a homomorphism, just like all other maps between modules. The product $M\times N$ can be given a module structure through component wise addition and multiplication by an element in $R$. Then $f$ becomes a map between two modules, and one might hope that it's a homomorphism. Alas, this is not true in general. This is because if $f$ were a $R$-module homomorphism from the module $MxN$ to the module $T$, then we would have for $r \in R$, $(ra, rb) = r(a,b)$, thus
+
+$$
+f(ra, rb) = f(r(a,b)) = rf(a,b)
+$$
+
+the last equality by the hypothesis that $f$ is $R$-linear.
+However, since $f$ is also bilinear,
+
+$$
+f(ra,rb) = rf(a,rb) = r^2f(a,b)
+$$
+
+But $r^2f(a,b) \neq rf(a,b)$ in general, so this doesn't work. We need a different approach.
+
+Fortunately, there is such an approach. That approach is through **tensor products**. It's accomplished not by giving a different module structure to $M\times N$ but rather by changing the domain module slightly.
+
+The new domain module is denoted as $M \otimes N$ and referred to as the tensor product of $M$ and $N$. It is defined as follows:
+
+consider the set of all formal $R$-linear combinations of pairs $(m,n), m\in M, n\in N$. Many definitions require that the formal terms commute with each other, so that $r_1(m_1, n_1) + r_2(m_2, n_2)= r_2 (m_2, n_2) + r_1(m_1, n_1)$, but that is not in fact necessary. To add two formal expressions in $X$, simply write them side by side and write a plus sign between them. To multiply a formal expression by an element in $R$, we simply multiply all the coefficients of all the terms by that number. We do not care what's inside the brackets.
+
+To obtain $M \otimes N$ from $X$, we impose a certain condition. Two formal expressions in $X$ are declared to be equivalent if and only if they evaluate to the same result for all bilinear maps $M \times N \to T$, where $T$ can be any $R$-module. To evaluate an expression in $X$ on a bilinear map $f$, we use the following formula
+
+$$
+f(r_1(m_1, n_1) + r_2(m_2, n_2)) = r_1 f(m_1, n_1) + r_2f(m_2, n_2)
+$$
+
+$M \otimes N$ is defined to be the resulting set of equivalence classes. There is a natural map $X \to M \otimes N$ taking each element of $X$ to its equivalence class.
+
+The image of a formal expression $(m,n) \in X$ is denoted by $m \otimes n \in M \otimes N$. Addition of elements in $M \otimes N$ is defined by picking respective expressions in $X$ that represent them, adding the expressions and mapping them back to the tensor product. The result is seen to be independent of choices of representatives since different choices evaluate to the same thing under every multilinear map. In much the same way we define the multiplication of a tensor by an element in $R$, by lifting to a formal expression, multiplying each term by an element in $R$, and bringing the result back to the tensor space.
+
+We can easily verify many properties of tensors by considering the properties of an arbitrary bilinear map. Thus for example we can verify that
+
+$$
+\begin{array}{rl}
+(rm) \otimes n = r (m \otimes n) = m \otimes (rn)
+\end{array}
+$$
+
+because if $f$ is an arbitrary bilinear map, 
+
+$$
+\begin{array}{rl}
+f(rm, n) = rf(m,n) = f(r(m,n)) = f(m, rn)
+\end{array}
+$$.
+
+In much the same way we verify that 
+
+$$
+m_1 \otimes n + m_2 \otimes n = (m_1 + m_2) \otimes n
+$$
+
+$$
+m \otimes n_1 + m \otimes n_2 = m \otimes (n_1 + n_2)
+$$
+
+by seeing that the formal expressions that represent them evaluate to the same result for all bilinear maps.
+
+The three properties above are usually taken as part of the definition of the tensor product. However, the author feels that such a presentation somewhat obscures the purpose of the tensor product, which is to linearize bilinear maps, i.e. to make them into homomorphisms. Instead of starting with these formal properties of tensors, we start with their purpose at the core of the definition and derive the formal properties as a natural consequence.
