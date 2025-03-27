@@ -169,3 +169,17 @@ First, consider the case where the two positions (say i and j) being transposed 
 One may think of the two orbits in terms of two disconnected directed cycles. The effect on the graph of composing the permutation with a transposition is taking an edge in one cycle (possibly self-directed if the cycle has size one) that's directed towards i and redirecting it towards j in the other cycle. And vice versa with j. 
 
 <img src="/assets/orbits.svg" alt="Two directed cycles with redirected edges" width="70%" height="auto" style="display: block; margin: 0 auto;">
+
+# Determinants without the fundamental fact?
+
+This chapter presents the proof which is the reason for this post. The proof is based on Claude Chevalley's textbook "Fundamental Concepts in Algebra". The core idea is contained in the book but the author of this blog post has taken the liberty to modify and simplify it in order to make the relationships more direct and streamlined.
+
+We have already discussed the relationship between the determinant and the signature homomorphism. Each has a simple defining property, and the existence of one easily implies the existence of the other. We have seen the formula for the determinant in terms of the signature homomorphism and the formula for the signature homomorphism in terms of the determinant before.
+
+When first encountering the signature homomorphism, it's tempting to notice that it behaves much like the determinant and attempt to prove its existence and the fundamental fact using the determinant. However, one runs into an issue of circularity: in most presentations, determinant is defined (or, in some cases, proven to be well-defined) using the fundamental fact.
+
+The author of this post previously thought it was unavoidable that in a treatment of the determinant and the symmetric groups the fundamental fact must come logically prior and be proven in a technical, combinatorial way. However, Chevalley's textbook has shown that another way was possible. It is possible to develop a satisfactory theory of antisymmetry and determinants in a self-contained way and have the fundamental fact drop out naturally from the theory you develop. In fact, in Chevalley's textbook, the signature homomorphism is actually defined in terms of the determinant. Meanwhile, the determinant is defined in terms of certain algebra structures which we will describe in the following sections.
+
+## Tensor products
+
+Let $M,N$ be $R$-modules for a commutative ring $R$. 
