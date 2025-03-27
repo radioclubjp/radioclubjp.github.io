@@ -153,8 +153,12 @@ There are a number of different popular elementary proofs of the fundamental fac
 
 ## Proofs using counting orbits
 
-Permutations decompose the set $[n]$ into **orbits**. To understand orbits, we look at a permutation $\sigma: [n] \to [n]$ as an action which takes a box in the position $i$ and moves it to position $\sigma(i)$ for all $i\in [n]$.
-We repeat this action many times and look at the set of positions that each box takes until it returns back to its original place. Such sets are called orbits.
+Permutations decompose the set $[n]$ into **orbits**. To understand orbits, we look at a permutation $\sigma: [n] \to [n]$ as an action which takes the box currently in the position $i$ and moves it to position $\sigma(i)$ for all $i\in [n]$.
+We repeat this action many times and look at the set of positions that each box takes until it returns back to its original place. Such sets are called orbits. 
+
+There are only finitely many places for the box to go, thus after some repetitions the box must return to a place it has been before.
+Can it be that a permutation takes 1 to 2, then to 3, then to 2 again, and it continues to loop between 2 and 3?
+The answer is no: every box must eventually return back to its original place for the following reason. A permutation is a bijection, which means that every element is mapped to by one and only one element. Were there any such loops with strings attached, there would be two elements mapping to the same element, which is an impossibility. Thus all orbits are loops and thus partition the set of positions.
 
 For example, take $n=5$ and consider the permutation that consists of moving each box one position to the right except the last box, which goes to the front. The box in position 1 moves to position 2, then 3, then 4, then 5, then back to 1. Thus there is a single orbit, which is the whole set of positions.
 
@@ -167,6 +171,14 @@ First, consider the case where the two positions (say i and j) being transposed 
 One may think of the two orbits in terms of two disconnected directed cycles. The effect on the graph of composing the permutation with a transposition is taking an edge in one cycle (possibly self-directed if the cycle has size one) that's directed towards i and redirecting it towards j in the other cycle. And vice versa with j. 
 
 <img src="/assets/orbits.svg" alt="Two directed cycles with redirected edges" width="70%" height="auto" style="display: block; margin: 0 auto;">
+
+Thus multiplying by a transposition in this case has the effect of reducing the number of orbits by one.
+
+Now consider the case where $i,j$ lie in the same orbit. What multiplying by $(ij)$ does the orbits of the permutation is separate the orbit into two distinct orbits: the exact opposite of the previous case. For a visual, you can take the orbit at the bottom in the image above as the starting orbit. The resulting two orbits are pictured at the top.
+
+Thus when $i,j$ lie in distinct orbits, the multiplication by a transposition has the effect of increasing the total number of orbits of the permutation by one.
+
+Thus in either case, the multiplication of a permutation by a transposition has the effect of increasing or decreasing the number of orbits by one, which means the parity of the number of orbits must necessarily change. But therein lies our invariant: if a permutation were expressible as a product of both an even and an odd number of transpositions, the set of orbits of the permutation would have both an even and an odd number of orbits, which is impossible. Thus our fundamental fact is proven.
 
 # Determinants without the fundamental fact?
 
@@ -222,6 +234,8 @@ $M \otimes N$ is defined to be the resulting set of equivalence classes. There i
 
 The image of a formal expression $(m,n) \in X$ is denoted by $m \otimes n \in M \otimes N$. Addition of elements in $M \otimes N$ is defined by picking respective expressions in $X$ that represent them, adding the expressions and mapping them back to the tensor product. The result is seen to be independent of choices of representatives since different choices evaluate to the same thing under every multilinear map. In much the same way we define the multiplication of a tensor by an element in $R$, by lifting to a formal expression, multiplying each term by an element in $R$, and bringing the result back to the tensor space.
 
+Note that in general not all tensors can be written in the form $m \otimes n$. The most we can hope for is some linear combination of such terms, without any way to combine them. The tensors that can be written in such a way are called **decomposable** tensors.
+
 We can easily verify many properties of tensors by considering the properties of an arbitrary bilinear map. Thus for example we can verify that
 
 $$
@@ -251,3 +265,11 @@ $$
 by seeing that the formal expressions that represent them evaluate to the same result for all bilinear maps.
 
 The three properties above are usually taken as part of the definition of the tensor product. However, the author feels that such a presentation somewhat obscures the purpose of the tensor product, which is to linearize bilinear maps, i.e. to make them into homomorphisms. Instead of starting with these formal properties of tensors, we start with their purpose at the core of the definition and derive the formal properties as a natural consequence.
+
+It also follows directly from the properties shown above that the map $\otimes : M \times N \to M \otimes N$ which sends $(m,n) \mapsto m \otimes n$ is a bilinear map itself.
+
+Now suppose $f: M \times N \to T$ is a bilinear map of $R$-modules. We have described how to evaluate formal expressions in $X$ using $f$. If two expressions in $X$ represent the same tensor in $M \otimes N$, then their evaluation at $f$ will be the same by definition of the tensor product. Thus we obtain a well-defined map $\bar{f}: M \otimes N \to T$ which inputs a tensor, and evaluates one of its representatives in $X$ using $f$. The map $\bar{f}$ is easily verified to be a homomorphism of $R$-modules, i.e. a linear map. Moreover, this now-linear map $\bar{f}$ preserves all the information that $f$ has in the following way: the composition $M \times N \to_\otimes M \otimes N \to_f T$ is equal to the original bilinear map $f$.
+
+Moreover, the map $\bar{f}$ is the only map with this property. For it's easy to see that its values are forced at tensors of the form $m \otimes n$ to be $f(m,n)$. Then the fact that the map is required to be $R$-linear also forces its value on all other combinations, thus all elements of $M \otimes N$. 
+
+Thus for any bilinear map of R-modules $f: M \times N \to T$, there always exists a $\bar{f}: M \otimes N \to T$ such that $\bar{f} \circ \otimes = f$, i.e. $\bar{f}(m \otimes n) = f(m,n)$ for all $(m,n) \in M \times N$. This is called the **universal property** of the tensor product. It is often used as the definition of the tensor product and when it's taken as such, it is used to prove that the tensor product is independent of implementation (the way to construct the map satisfying this property): any two modules satisfying this property are isomorphic.
