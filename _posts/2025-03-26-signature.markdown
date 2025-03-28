@@ -264,7 +264,9 @@ $$
 
 by seeing that the formal expressions that represent them evaluate to the same result for all bilinear maps.
 
-The three properties above are usually taken as part of the definition of the tensor product. However, the author feels that such a presentation somewhat obscures the purpose of the tensor product, which is to linearize bilinear maps, i.e. to make them into homomorphisms. Instead of starting with these formal properties of tensors, we start with their purpose at the core of the definition and derive the formal properties as a natural consequence.
+The three properties above are usually taken as part of the definition of the tensor product. However, the author feels that such a presentation somewhat obscures the purpose of the tensor product, which is to linearize bilinear maps, i.e. to make them into homomorphisms. Instead of starting with these formal properties of tensors, we start with their purpose at the core of the definition, which is to make bilinear maps into homomorphisms/linear maps, and derive the formal properties as a natural consequence. 
+
+A curious thing about the unusual approach to the tensor product that we presented is that it's **impredicative**. That means, in the definitions, it refers to itself. That is because it defines the tensor product in therms of all bilinear maps, while the map $\otimes: (m,n) \mapsto m \otimes n$ is a bilinear map, so it's one of the bilinear maps the definition refers to. This is not a problem in mathematics because the universe is assumed to be fixed, and the purpose of a definition is merely to delineate something that is already there, rather than be an act of creation. For more on predicativity and approaches to the foundations of mathematics which try to avoid it, a good reference is the article ["Predicativity"](https://math.stanford.edu/~feferman/papers/predicativity.pdf) by Solomon Feferman. 
 
 It also follows directly from the properties shown above that the map $\otimes : M \times N \to M \otimes N$ which sends $(m,n) \mapsto m \otimes n$ is a bilinear map itself.
 
