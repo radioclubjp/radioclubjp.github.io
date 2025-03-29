@@ -75,7 +75,7 @@ Here's an example of such a partition of the graph of $S_3$. The group $A$ is sh
 
   <img src="/assets/k33graph.svg" alt="K3,3" width="70%" height="auto" style="display: block;margin-bottom: 4rem;margin-top: 4rem; margin-left: auto; margin-right: auto;">
 
-
+This diagram constitutes a proof that the fundamental fact is true for $S_3$. However, it's not obvious why such diagrams can be constructed more generally for $S_n$ where $n>3$. If the fundamental fact is true, it follows that they can be constructed but it's not obvious why the graph must be bipartite without assuming the fundamental fact. Thus, this section in no way constitutes a proof of the fundamental fact, only a different perspective on its significance.
 
 # Determinants
 
