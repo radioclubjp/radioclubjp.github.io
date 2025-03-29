@@ -10,6 +10,9 @@ categories: math
 
 The signature homomorphism is one of the most beautiful and miraculous objects in mathematics. Its existence is a miracle explained by what we will call the fundamental fact. This post explores the meaning of the signature homomorphism, the fundamental fact and ways to prove it.
 
+* This will become a table of contents (this text will be scrapped).
+{:toc}
+
 # Motivation
 
 Let's start with a simple problem.
@@ -26,6 +29,8 @@ If you're anything like me and have a background in basic group theory and linea
 
 # Basic definitions
 
+## The signature homomorphism 
+
 The signature homomorphism is a function $\rho: S_n \to C_2$.
 $S_n$ is the group of all permutations of the set $[n] := \{1,\ldots, n\} \subset \mathbb{N}$ . $C_2$ is the cyclic group of order two which may be regarded as the set $\{-1, 1\}$ under multiplication. 
 
@@ -38,10 +43,6 @@ It is defined as follows. Suppose you have a permutation $\sigma \in S_n$. Then 
 
 We ignore everything about the factors themselves and only look at the number of them. More precisely, we look at the parity of the number of factors.
 
-To see that each permutation can be expressed as a product of transpositions, consider that permutations $\sigma \in S_n$ correspond exactly to arrangements of boxes labeled $1$ through $n$. Multiplying a permutation by a transposition on the left, which is the same as function composition on the left, corresponds to switching the positions of two boxes. The claim that every permutation is expressible as a product of transpositions then boils down to the claim that every arrangement of boxes can be achieved by a series of swaps. This is obviously true: first swap the box labeled $1$ to the correct position, then that labeled $2$, and so on. In fact this shows that every permutation in $S_n$ can be expressed as a product of at most *n* transpositions. Actually, $n-1$ transpositions suffices, since by the time you've put $n-1$ boxes in their place, the final box will also necessarily be in its own place and no more swaps are needed.
-
-In the above paragraph we gave one way to express a permutation as a product of transpositions. But that is by no means the only way to do so. Consider, for example, the fact that the identity permutation is expressible as a product of two transpositions $1 = (12)(12)$ as well as the product of zero transpositions, which is the identity. Here $(a \  b)$ for $a\neq b$ stands for the transposition which maps $a\to b$ and $b\to a$ and leaves other numbers fixed.
-
 Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
 
 \begin{equation}
@@ -49,11 +50,19 @@ Besides being a function, the signature homomorphism $\rho$ also has the special
 \label{eq:signature-hom}
 \end{equation}
 
-The mystery and the fundamental fact that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We call this claim the **fundamental fact** in the context of this essay (it's not actually called that way in mathematics).
+## Every permutation can be represented as a product of transpositions
+
+To see that each permutation can be expressed as a product of transpositions, consider that permutations $\sigma \in S_n$ correspond exactly to arrangements of boxes labeled $1$ through $n$. Multiplying a permutation by a transposition on the left, which is the same as function composition on the left, corresponds to switching the positions of two boxes. The claim that every permutation is expressible as a product of transpositions then boils down to the claim that every arrangement of boxes can be achieved by a series of swaps. This is obviously true: first swap the box labeled $1$ to the correct position, then that labeled $2$, and so on. In fact this shows that every permutation in $S_n$ can be expressed as a product of at most *n* transpositions. Actually, $n-1$ transpositions suffices, since by the time you've put $n-1$ boxes in their place, the final box will also necessarily be in its own place and no more swaps are needed.
+
+## The lack of uniqueness of such representation and the fundamental fact
+
+In the above section we gave a method to express a permutation as a product of transpositions. But that is by no means the only way to do so. Consider, for example, the fact that the identity permutation is expressible as a product of two transpositions $1 = (12)(12)$ as well as the product of zero transpositions, which is the identity. Here $(a \  b)$ for $a\neq b$ stands for the transposition which maps $a\to b$ and $b\to a$ and leaves other numbers fixed.
+
+The mystery and the fundamental fact that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We call this claim the **fundamental fact** in the context of this essay though that's not a standard name.
 
 Perhaps the reader immediately grasps why the fundamental fact must necessarily be true. If that's the case, then the author should not recommend they continue reading this essay, since it consists of an attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive, as well as explore different ways to prove the fundamental fact. 
 
-## Another way to think of the fundamental fact
+## Graph theoretic interpretation of the fundamental fact
 
 One way to look at the fundamental fact is as follows. For each $S_n$ we construct a graph. The vertices consist of permutations of $[n]$, i.e. the elements of $S_n$. Two permutations are connected by an edge if they differ by a transposition. That is, for two bijections $\sigma_1, \sigma_2 :[n] \to [n]$, there is an edge $(\sigma_1 \sigma_2)$ if there is a transposition $\tau \in S_n$ such that $\sigma_2 = \tau \sigma_1$. The edges don't need to have a direction since the relation is symmetric: as $\tau$ is a transposition, we have $\tau^2 = 1$ so $\tau \sigma_2 = \tau \tau \sigma_1 = \tau^2 \sigma_1 = 1\sigma_1  = \sigma_1$.
 
@@ -290,3 +299,9 @@ Now suppose $f: M \times N \to T$ is a bilinear map of $R$-modules. We have desc
 Moreover, the map $\bar{f}$ is the only map with this property. For it's easy to see that its values are forced at tensors of the form $m \otimes n$ to be $f(m,n)$. Then the fact that the map is required to be $R$-linear also forces its value on all other combinations, thus all elements of $M \otimes N$. 
 
 Thus for any bilinear map of R-modules $f: M \times N \to T$, there always exists a $\bar{f}: M \otimes N \to T$ such that $\bar{f} \circ \otimes = f$, i.e. $\bar{f}(m \otimes n) = f(m,n)$ for all $(m,n) \in M \times N$. This is called the **universal property** of the tensor product. It is often used as the definition of the tensor product and when it's taken as such, it is used to prove that the tensor product is independent of implementation (the way to construct the map satisfying this property): any two modules satisfying this property are isomorphic.
+
+The tensor product of two modules generalizes well into the tensor product of multiple modules. Thus for example we set $M_1 \otimes M_2 \otimes M_3 := (M_1 \otimes M_2) \otimes M_3$. It is a fact that that there is a natural isomorphism $\bar{q}: (M_1 \otimes M_2) \otimes M_3 \cong M_1 \otimes (M_2 \otimes M_3)$, which is the linearization of the bilinear map $q: (M_1 \otimes M_2) \times M_3 \to M_1 \otimes (M_2 \otimes M_3)$ which is defined by setting $q((m_1\otimes m_2), m_3) = m_1 \otimes (m_2 \otimes m_3)$.
+
+Thus when we have a tensor product of multiple spaces, it algebraically doesn't matter which way we put the brackets. And in fact these iterated tensor products satisfy an equivalent universal property of their own, but where instead of considering bilinear maps you consider trilinear or generally multilinear maps. Thus going back to our discussion of the determinant, it is an multilinear function in each argument, thus it induces a module homomorphism $\bar{\det}: \underbrace{V \otimes \ldots \otimes V}_n  \to R$, which has all the same information as the original determinant function.
+
+## The tensor algebra
