@@ -6,7 +6,7 @@ categories: math
 ---
 
 
-# Introduction
+## Introduction
 
 The signature homomorphism is one of the most beautiful and miraculous objects in mathematics. Its existence is a miracle explained by what we will call the fundamental fact. This post explores the meaning of the signature homomorphism, the fundamental fact and ways to prove it.
 
@@ -16,7 +16,7 @@ Let's start with a simple problem.
 
 > Suppose you have $n$ boxes arranged in a row and labeled $1, 2, \ldots, n$. You are playing a game. An allowed move consists of picking two boxes and switching their positions. There's a catch - next to you there is a light. Initially the light starts off but each time you switch two boxes the light switches its state on $\to$ off and off $\to $ on. Your task: arrange a series of moves such that after performing them, the boxes are all back to their original positions, yet the light is on.
 
-This is trivially impossible when you have only one box: there's nothing to switch. It's also impossible with two boxes: there are only two possible positions and a move must switch between the two. The positions correspond exactly to whether the light is on or off. What about three boxes? Do you understand intuitively why it's true for 3 boxes? What about 5 boxes?
+This is trivially impossible when you have only one box: there's nothing to switch. It's also impossible with two boxes: there are only two possible positions and a move must switch between the two. The positions correspond exactly to whether the light is on or off. What about three boxes? Do you understand intuitively why it's impossible for 3 boxes? What about 5 boxes?
 
 The reader might benefit from trying the interactive version of the game with five boxes below (credit to Claude 3.7 Sonnet).
 
