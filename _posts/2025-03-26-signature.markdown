@@ -70,7 +70,7 @@ Here's an example of such a partition of the graph of $S_3$. The group $A$ is sh
 
 # Determinants
 
-$\rho$ can be used to define the determinant. Let $R$ be a commutative ring. If the reader is not familiar with the term, they are free to take $R$ to be equal to the set of rational numbers $\mathbb{Q}$ or the set of real numbers $\mathbb{R}$ or the set of complex numbers $\mathbb{C}$, as these are all common examples of commutative rings.
+The signature homomorphism $\rho$ can be used to define the determinant. Let $R$ be a commutative ring. If the reader is not familiar with the term, they are free to take $R$ to be equal to the set of rational numbers $\mathbb{Q}$ or the set of real numbers $\mathbb{R}$ or the set of complex numbers $\mathbb{C}$, as these are all common examples of commutative rings.
 
 Fix $n \in \mathbb{N}$ and let $V = R^n$ be the free $R$-module of rank $n$. That is, the space of n-tuples of elements of $R$, written $(r_i)= (r_1,\ldots,r_n) \in R^n,  \ r_i \in R$. Elements in $V$ may be added together:
 
@@ -151,7 +151,7 @@ The last expression is referred to as the Leibniz expansion of the determinant a
 
 There are a number of different popular elementary proofs of the fundamental fact in the literature. We present a few of them in this chapter. They are not hard proofs. However, they are not very natural and have the unfortunate appearance of being rather technical and not very illuminating. That is not to say they aren't valid proofs: they're completely valid. However, later I will present what I think is a better and a more natural proof, which is the main motivating reason behind the article.
 
-## Proofs using counting orbits
+## A proof by counting orbits
 
 Permutations decompose the set $[n]$ into **orbits**. To understand orbits, we look at a permutation $\sigma: [n] \to [n]$ as an action which takes the box currently in the position $i$ and moves it to position $\sigma(i)$ for all $i\in [n]$.
 We repeat this action many times and look at the set of positions that each box takes until it returns back to its original place. Such sets are called orbits. 
@@ -179,6 +179,21 @@ Now consider the case where $i,j$ lie in the same orbit. What multiplying by $(i
 Thus when $i,j$ lie in distinct orbits, the multiplication by a transposition has the effect of increasing the total number of orbits of the permutation by one.
 
 Thus in either case, the multiplication of a permutation by a transposition has the effect of increasing or decreasing the number of orbits by one, which means the parity of the number of orbits must necessarily change. But therein lies our invariant: if a permutation were expressible as a product of both an even and an odd number of transpositions, the set of orbits of the permutation would have both an even and an odd number of orbits, which is impossible. Thus our fundamental fact is proven.
+
+## A proof by counting inversions
+
+Another popular proof of the fundamental fact proceeds by counting inversions. We view a permutation $\sigma: [n] \to [n]$ in terms of a row of boxes labeled 1 through n, such that the box with the label $i\in [n]$ takes the position $\sigma(i) \in [n]$. In this way, we equate a permutation with an arrangement of $n$ labeled boxes from left to right.
+
+An **inversion** is a pair of boxes where the left label is a higher number than the right label. The quantity we will be concerned with is the parity of the total number of inversions of a permutation. 
+
+Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that it the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $5 * (5-1) = 20$ inversions, which is the maximal number of inversions possible for $5$ boxes.
+
+Now we claim that every transposition changes the parity of the number of inversions. The fundamental fact will then follow from it, since the number of inversions of a permutation is not dependent on the on the way you express it as a product of transpositions, and the parity of the number of inversions tells you whether the permutation can only be expressed as a product of an even number of transpositions or an odd number of transpositions.
+
+To prove this fact, first prove that it's enough to prove it for the case of adjacent transpositions (where you swap the places of two adjacent boxes). That is because every transposition can be expressed as an odd number of adjacent transpositions: suppose there are $n$ boxes between the two boxes $i,j$ in question, where box $i$ is to the left of box $j$. Then we transpose them first by moving $j$ $n+1$ places to the left so that it's adjacent to the left of $i$, then we move the box $i$ $n$ places to the right to the original position of box $j$. So in total we have $2n + 1$ moves with the effect of swapping the positions of boxes $i$ and $j$, while leaving the positions of all the other boxes untouched. The number $2n+1$ is odd no matter what $n$ is.
+Thus if every adjacent transposition switches the parity of the number of inversions, then a transposition, which can be expressed as an odd number of adjacent switches, must also switch the parity of the number of inversions, which is what was to be proven.
+
+Now the final part is almost obvious. When you switch the positions of two adjacent boxes, the only pair of boxes which changes their order is exactly the pair of boxes you're switching. If that pair was not an inversion, it becomes an inversion, because the order is reversed. If it was an inversion before, it ceases to be an inversion after the swap. In any case, the number of inversions changes by 1 or -1, which necessarily switches the parity of the total number of inversions, which is what was to be proven.
 
 # Determinants without the fundamental fact?
 
