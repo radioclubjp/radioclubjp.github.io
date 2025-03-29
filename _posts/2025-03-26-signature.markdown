@@ -62,7 +62,7 @@ The mystery and the fundamental fact that this essay is concerned with, is the f
 
 Perhaps the reader immediately grasps why the fundamental fact must necessarily be true. If that's the case, then the author should not recommend they continue reading this essay, since it consists of an attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive, as well as explore different ways to prove the fundamental fact. 
 
-## Graph theoretic interpretation of the fundamental fact
+# A graph theoretic interpretation of the fundamental fact
 
 One way to look at the fundamental fact is as follows. For each $S_n$ we construct a graph. The vertices consist of permutations of $[n]$, i.e. the elements of $S_n$. Two permutations are connected by an edge if they differ by a transposition. That is, for two bijections $\sigma_1, \sigma_2 :[n] \to [n]$, there is an edge $(\sigma_1 \sigma_2)$ if there is a transposition $\tau \in S_n$ such that $\sigma_2 = \tau \sigma_1$. The edges don't need to have a direction since the relation is symmetric: as $\tau$ is a transposition, we have $\tau^2 = 1$ so $\tau \sigma_2 = \tau \tau \sigma_1 = \tau^2 \sigma_1 = 1\sigma_1  = \sigma_1$.
 
