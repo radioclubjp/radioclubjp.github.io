@@ -39,10 +39,16 @@
     }
     
     .box-container {
+      position: relative;
+      height: 70px;
+      margin-bottom: 25px;
       display: flex;
       justify-content: center;
-      margin-bottom: 25px;
-      gap: 10px;
+    }
+    
+    .box-wrapper {
+      position: relative;
+      width: 350px; /* Width to contain all boxes and gaps */
     }
     
     .box {
@@ -57,15 +63,16 @@
       font-size: 24px;
       font-weight: bold;
       cursor: pointer;
-      transition: all 0.2s;
       user-select: none;
+      position: absolute;
+      transition: transform 0.3s ease-out, left 0.4s ease-in-out;
     }
     
     .box.selected {
       background-color: #e0f7fa;
       border-color: #0097a7;
-      transform: translateY(-5px);
       box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
     }
     
     .light {
@@ -143,11 +150,9 @@
     </div>
     
     <div class="box-container" id="boxContainer">
-      <div class="box" data-value="1">1</div>
-      <div class="box" data-value="2">2</div>
-      <div class="box" data-value="3">3</div>
-      <div class="box" data-value="4">4</div>
-      <div class="box" data-value="5">5</div>
+      <div class="box-wrapper" id="boxWrapper">
+        <!-- Boxes will be created by JavaScript -->
+      </div>
     </div>
     
     <div class="light off" id="light">OFF</div>
@@ -169,7 +174,55 @@
     document.addEventListener('DOMContentLoaded', function() {
       const gameToggle = document.getElementById('gameToggle');
       const gameContainer = document.getElementById('gameContainer');
+      const boxWrapper = document.getElementById('boxWrapper');
+      const light = document.getElementById('light');
+      const moveCounter = document.getElementById('moveCounter');
+      const resetButton = document.getElementById('resetButton');
       
+      // Game state
+      let selectedBoxes = [];
+      let moveCount = 0;
+      let lightOn = false;
+      let animationInProgress = false;
+      let boxes = [];
+      let boxPositions = [];
+      
+      // Create boxes
+      const boxValues = [1, 2, 3, 4, 5];
+      const boxCount = boxValues.length;
+      const boxWidth = 60; // Should match CSS
+      const gapWidth = 10; // Should match CSS gap
+      const totalWidth = boxCount * boxWidth + (boxCount - 1) * gapWidth;
+      
+      // Initialize boxes
+      function initializeBoxes() {
+        // Clear existing boxes
+        boxWrapper.innerHTML = '';
+        boxes = [];
+        
+        // Create and position boxes
+        boxValues.forEach((value, index) => {
+          const box = document.createElement('div');
+          box.className = 'box';
+          box.textContent = value;
+          box.dataset.value = value;
+          box.dataset.originalIndex = index;
+          
+          const xPosition = index * (boxWidth + gapWidth);
+          box.style.left = xPosition + 'px';
+          
+          boxWrapper.appendChild(box);
+          boxes.push(box);
+          
+          // Store original positions
+          boxPositions[index] = xPosition;
+          
+          // Add event listeners
+          box.addEventListener('click', handleBoxClick);
+        });
+      }
+      
+      // Toggle game visibility
       gameToggle.addEventListener('click', function() {
         if (gameContainer.style.display === 'block') {
           gameContainer.style.display = 'none';
@@ -177,21 +230,71 @@
         } else {
           gameContainer.style.display = 'block';
           gameToggle.textContent = 'Hide Game';
+          // Initialize boxes if not already done
+          if (boxes.length === 0) {
+            initializeBoxes();
+          }
         }
       });
-      const boxes = document.querySelectorAll('.box');
-      const light = document.getElementById('light');
-      const moveCounter = document.getElementById('moveCounter');
-      const resetButton = document.getElementById('resetButton');
-      const challengeText = document.getElementById('challengeText');
       
-      let selectedBoxes = [];
-      let moveCount = 0;
-      let lightOn = false;
+      // Handle box click
+      function handleBoxClick() {
+        if (animationInProgress) return;
+        
+        if (selectedBoxes.length === 0) {
+          // First box selected
+          this.classList.add('selected');
+          selectedBoxes.push(this);
+        } else if (selectedBoxes[0] === this) {
+          // Same box clicked again, deselect
+          this.classList.remove('selected');
+          selectedBoxes = [];
+        } else {
+          // Second box selected, perform swap
+          selectedBoxes[0].classList.remove('selected');
+          animateSwap(selectedBoxes[0], this);
+          selectedBoxes = [];
+        }
+      }
       
-      // Store original order for reset and verification
-      const originalOrder = Array.from(boxes).map(box => box.dataset.value);
+      // Animate box swap
+      function animateSwap(box1, box2) {
+        animationInProgress = true;
+        
+        // Get current positions
+        const box1Index = Array.from(boxes).indexOf(box1);
+        const box2Index = Array.from(boxes).indexOf(box2);
+        
+        // Swap positions in the boxes array
+        [boxes[box1Index], boxes[box2Index]] = [boxes[box2Index], boxes[box1Index]];
+        
+        // Animate the swap
+        const box1Left = parseInt(box1.style.left);
+        const box2Left = parseInt(box2.style.left);
+        
+        box1.style.transition = 'left 0.4s ease-in-out';
+        box2.style.transition = 'left 0.4s ease-in-out';
+        
+        box1.style.left = box2Left + 'px';
+        box2.style.left = box1Left + 'px';
+        
+        // After animation completes
+        setTimeout(() => {
+          // Increment move counter
+          moveCount++;
+          updateMoveCounter();
+          
+          // Toggle light
+          toggleLight();
+          
+          // Check if challenge is complete
+          checkChallenge();
+          
+          animationInProgress = false;
+        }, 400);
+      }
       
+      // Toggle light state
       function toggleLight() {
         lightOn = !lightOn;
         if (lightOn) {
@@ -205,85 +308,41 @@
         }
       }
       
+      // Update move counter
       function updateMoveCounter() {
         moveCounter.textContent = moveCount;
       }
       
-      function swapBoxes(box1, box2) {
-        const parent = box1.parentNode;
-        const box1NextSibling = box1.nextSibling;
-        
-        // Get values
-        const temp = box1.textContent;
-        const tempValue = box1.dataset.value;
-        
-        // Update values
-        box1.textContent = box2.textContent;
-        box1.dataset.value = box2.dataset.value;
-        box2.textContent = temp;
-        box2.dataset.value = tempValue;
-        
-        // Visual effects for swap
-        box1.style.transform = 'scale(1.1)';
-        box2.style.transform = 'scale(1.1)';
-        
-        setTimeout(() => {
-          box1.style.transform = '';
-          box2.style.transform = '';
-        }, 300);
-        
-        // Increment move counter
-        moveCount++;
-        updateMoveCounter();
-        
-        // Toggle light
-        toggleLight();
-        
-        // Check if in challenge mode and boxes are back in original order
-        checkChallenge();
-      }
-      
+      // Check if challenge is complete
       function checkChallenge() {
-        const currentOrder = Array.from(boxes).map(box => box.dataset.value);
-        const backToOriginal = currentOrder.every((val, idx) => val === originalOrder[idx]);
+        // Check if boxes are in original order
+        const inOriginalOrder = boxes.every((box, index) => 
+          parseInt(box.dataset.value) === index + 1
+        );
         
-        if (backToOriginal && lightOn) {
+        if (inOriginalOrder && lightOn) {
           setTimeout(() => {
             alert('Congratulations! You broke the universe and created a black hole!');
           }, 500);
         }
       }
       
-      boxes.forEach(box => {
-        box.addEventListener('click', function() {
-          if (selectedBoxes.length === 0) {
-            // First box selected
-            this.classList.add('selected');
-            selectedBoxes.push(this);
-          } else if (selectedBoxes[0] === this) {
-            // Same box clicked again, deselect
-            this.classList.remove('selected');
-            selectedBoxes = [];
-          } else {
-            // Second box selected, perform swap
-            selectedBoxes[0].classList.remove('selected');
-            swapBoxes(selectedBoxes[0], this);
-            selectedBoxes = [];
-          }
-        });
-      });
-      
+      // Reset game
       resetButton.addEventListener('click', function() {
+        if (animationInProgress) return;
+        
         // Clear selections
         selectedBoxes.forEach(box => box.classList.remove('selected'));
         selectedBoxes = [];
         
-        // Reset boxes to original order
-        const boxArray = Array.from(boxes);
-        for (let i = 0; i < boxArray.length; i++) {
-          boxArray[i].textContent = originalOrder[i];
-          boxArray[i].dataset.value = originalOrder[i];
-        }
+        // Sort boxes by original value
+        boxes.sort((a, b) => a.dataset.value - b.dataset.value);
+        
+        // Reset positions
+        boxes.forEach((box, index) => {
+          box.style.transition = 'left 0.4s ease-in-out';
+          box.style.left = boxPositions[index] + 'px';
+        });
         
         // Reset light to off
         if (lightOn) {
@@ -294,8 +353,6 @@
         moveCount = 0;
         updateMoveCounter();
       });
-      
-      // Challenge is always active by default
     });
   </script>
 </body>
