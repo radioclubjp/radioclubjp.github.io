@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Parity of permutations"
+title:  "On the parity of permutations"
 date:   2025-03-26 1:00:22 +0200
 categories: math
 ---
