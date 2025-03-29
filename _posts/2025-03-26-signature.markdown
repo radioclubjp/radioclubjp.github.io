@@ -326,7 +326,7 @@ $$
 \end{align*}
 $$
 
-The tensor algebra is a **graded algebra**, since it's a direct sum of submodules $M_n := M^{\otimes n}$ and multiplying an element of $M^n$ with an element with $M^m$ returns an element of $M^{m+n}$.
+The tensor algebra is a **graded algebra**, since it's a direct sum of submodules $M_n := M^{\otimes n}$ and multiplying an element of $M_n$ with an element with $M_m$ returns an element of $M_{m+n}$.
 
 ## The exterior algebra
 
