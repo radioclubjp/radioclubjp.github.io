@@ -316,7 +316,9 @@ $$
 
 where $M^{\otimes 0}$ is defined to be the ring $R$ in consideration, viewed as an $R$-module. Thus the elements of $A_M$ are finite sums of tensors from any $M^{\otimes n}$.
 
-Thus in the case $M = \mathbb{R}$, if we let $(e_i)_{i=1}^3$ be the standard basis vectors, we have $e_1 e_2 = e_1 \otimes e_2 \in M^{\otimes 2} \subset A_M$. We can have elements of $A_M$ of mixed degree, for example $e_1 \otimes e_3 + e_2 \in A_M$. The multiplication of such terms is by distributing over the terms and multiplying the individual tensor products. For example 
+The tensor algebra is a **graded algebra**, since it's a direct sum of submodules $M_n := M^{\otimes n}$ and multiplying an element of $M_n$ with an element with $M_m$ returns an element of $M_{m+n}$. We say that an element $m \in M_i$ has **degree i**.
+
+Thus in the case $M = \mathbb{R}^3$, $R= \mathbb{R}$, if we let $(e_i)_{i=1}^3$ be the standard basis vectors, we have $e_1 e_2 = e_1 \otimes e_2 \in M^{\otimes 2} \subset A_M$. We can have elements of $A_M$ of mixed degree, for example $e_1 \otimes e_3 + e_2 \in A_M$. The multiplication of such terms is by distributing over the terms and multiplying the individual tensor products. 
 
 $$
 \begin{align*}
@@ -326,7 +328,21 @@ $$
 \end{align*}
 $$
 
-The tensor algebra is a **graded algebra**, since it's a direct sum of submodules $M_n := M^{\otimes n}$ and multiplying an element of $M_n$ with an element with $M_m$ returns an element of $M_{m+n}$.
+We identify $M_1$, the elements of the first degree, with $M$, so that $M \subset A_M$.
+
+Much like the tensor product satisfies a universal property with respect to bilinear and multilinear maps, the tensor algebra satisfies a similar yet slightly distinct universal property. It concerns homomorphisms of algebras. 
+
+Suppose $M$ is an $R$-module, $T$ is an $R$-algebra and $f: M \to T$ is an $R$-linear map. Then $f$ extends in a unique way to a homomorphism of *algebras*
+
+$\bar{f}: A_M \to T$.
+
+It is defined on generators by the formula
+
+$$
+\bar{f}(r_1 m_1 \otimes \ldots \otimes m_k) = r_1 f(m_1)\ldots f(m_k)
+$$
+
+end extended by the homomorphism properties to all of $A_M$.
 
 ## The exterior algebra
 
