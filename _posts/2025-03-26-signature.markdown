@@ -368,4 +368,23 @@ $$
 m_1m_2 = -m_2m_1
 $$
 
+From this we derive the fact that in a product expression such as $x=m_1\ldots m_k$, swapping $m_i$ with $m_j$ for $i \neq j$ results in $-x$. This is because any swap of two elements can be arranged as an odd number of adjacent swaps, each one flipping the sign, as was already discussed in the section on proof by counting inversions.
 
+Looking at this, one is tempted to do the following. To prove the fundamental fact for $S_n$, simply pick an expression $m_1\ldots m_n$ in $E_M$ and declare the sign $\rho(\sigma)$ of a permutation $\sigma \in S_n$ to be defined by $m_{\sigma(1)}\ldots m_{\sigma(n)} = \rho(\sigma) m_1 \ldots m_n$. Indeed, flipping any two elements in the product expression is the same as flipping the sign, so that we seem to get a clear invariant which allows us to easily prove the fundamental theorem. 
+
+However, there's a catch. For $\rho(\sigma)$ to be well defined in the above expression the whole expression $m_1 \ldots m_n$ has to be nonzero. Indeed, consider the simple case $n=2$ and $m_1 = m_2$. Then $m_1m_2 = m_1m_1 = 0$. It's true that $m_1m_2 = -m_2m_1$ in this case but that doesn't tell us anything and doesn't provide us with an invariant since we also have $m_1m_2 = m_2m_1$, so should the sign be $-1$ or $1$?
+
+Thus we see that to define the sign of a permutation in $S_n$ using the exterior algebra in this way requires us to first find a product of $n$ elements of $M$ that is nonzero. And this isn't exactly trivial.
+
+A natural choice is to take $M=R^n$ and to take the elements $m_i$ to be the standard basis vectors $e_i \in M$. However, how would you prove that $e_1 \ldots e_n \neq 0$? That is, why can't $e_1 \ldots e_n \in A_M$ be expressed as a sum of elements of the form $a(t\otimes t)b \in A_M$?
+Proving this directly seems to be quite difficult. However, a map to be considered in a next section will simplify things greatly.
+
+## Tensor product algebra
+
+Before proceeding, it's important to define another notion, which is that of a tensor product of two graded algebras an an algebra. Suppose $A = \bigoplus_{n=0}^\infty A_n$ is a graded algebra. 
+
+## The analyzing map
+
+We present a map which will give us a lot of insight into the exterior algebra and will allow us to see that that the product of basis elements as described above is nonzero
+
+The map is defined for an arbitrary $R$-module $M$ as follows. First consider the map $f: M \to M \otimes M$.
