@@ -525,7 +525,7 @@ $$
 
 In the resulting expression we can see that all terms belong to distinct components $T_{i,j} = E_i \otimes E_j$, with the exception of the two middle terms which both belong to $T_{1,1}$. However, in the terms in $T_{1,1}$, all terms are simple tensor products of elements of $M$, the alternating algebra structure is gone. 
 
-In general for $n$ terms $m_1 \ldots m_n$, we write $S_{1i} = 1 \otimes m_i$ and $S_{2i} = m_i \otimes 1$ so that $U(m_i) = S_{1i} + S_{2i}$. Then 
+In general for $n$ terms $m_1 \ldots m_n$, we write $S_{1i} = m_i \otimes 1$ and $S_{2i} = 1 \otimes m_i$ so that $U(m_i) = S_{1i} + S_{2i}$. Then 
 
 $$
 \begin{align*}
@@ -537,7 +537,25 @@ $$
 where the sum is over all functions $\tau: [n] \to \\{1,2\\}$. However, if $L \subset [n]$ denotes the set of elements such that $\tau(i) = 1$ and $R \subset [n]$ denotes the complement in $[n]$, we find that
 
 $$
-\prod_{i=1}^n S_{\tau(i)i} = \pm (\prod_{i \in L} m_i) \otimes (\prod_{i \in R} m_i)
+\prod_{i=1}^n S_{\tau(i)i} = (-1)^N (\prod_{i \in L} m_i) \otimes (\prod_{i \in R} m_i)
 $$
 
-The sign $\pm$ in the above expression is related to the way the factors $L_{1i}$ and $L_{2i}$ interleave. It's $1$ if and only if there is an even number of pairs $i<j$ such that $i \in R$ and $j \in L$. This may be proven by induction. However, we will not provide a proof since this fact is unimportant in the following.
+In the above expression and the following expressions, all indexed products are ordered in an ascending order with respect to the indices. The sign $(-1)^N$ in the above expression is related to the way the factors $S_{1i}$ and $S_{2i}$ interleave. $N$ is exactly the number of pairs $i<j$ such that $i \in R$ and $j \in L$. To see this, first we note that
+
+$$
+\begin{align*}
+\prod_{i\in L}S_{1i} = \prod_{i\in L} (m_i \otimes 1) = \prod_{i\in L}m_i \otimes 1 \\
+\prod_{i\in R}S_{2i} = \prod_{i\in L} (1 \otimes m_i) = 1 \otimes \prod_{i\in R}m_i
+\end{align*}
+$$
+
+which means that 
+
+$$
+\begin{align*}
+  &\prod_{i\in L}S_{1i} \prod_{i\in R}S_{2i} = (\prod_{i\in L}m_i \otimes 1) (1 \otimes \prod_{i\in R}m_i) \\
+= & (-1)^{0*0} \prod_{i\in L}m_i \otimes \prod_{i\in R}m_i = \prod_{i\in L}m_i \otimes \prod_{i\in R}m_i
+\end{align*}
+$$
+
+To get the product $\prod_{i=1}^n S_{\tau(i)i}$ in the form $\prod_{i\in L}S_{1i} \prod_{i\in R}S_{2i}$, we need to perform a series of swaps, so that all the factors $S_{1i}$ end up on the left of $S_{2j}$. We only need to swap adjacent factors of the form $S_{2j}S_{1i}$ and since $S_{2j}S_{1i} = - S_{1i}S_{2j}$, each such swap introduces a minus sign. There are as many such swaps to be done as there are pairs $i<j$ such that $i\in R$, $j \in L$, since the factors $S_{2i}, S_{1j}$ corresponding each such pair must eventually become adjacent and be swapped, and conversely each pair to be swapped corresponds to such a factor.
