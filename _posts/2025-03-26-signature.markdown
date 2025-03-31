@@ -414,7 +414,7 @@ Proving this directly seems to be quite difficult. However, a map to be consider
 
 Before proceeding, it's important to define another notion, which is that of a tensor product of two graded algebras an algebra. That is, if $A,B$ are graded $R$-algebras, we already know that $A\otimes B$ is an $R$-module but we also want to add a structure of multiplication, so that it becomes an $R$-algebra. Since $A,B$ are algebras, they can be decomposed into a direct sum of submodules of homogeneous elements of differing degrees: $A = \bigoplus_{i=0}^\infty A_i$ and  $B = \bigoplus_{i=0}^\infty B_i$.
 
-The underlying set of the of the algebra will be the same as that of the tensor product. It decomposes into a direct sum
+The underlying set of the algebra will be the same as that of the tensor product. It decomposes into a direct sum
 
 $$
 \begin{align*}
