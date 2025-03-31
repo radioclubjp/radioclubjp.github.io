@@ -411,9 +411,57 @@ Thus we see that to define the sign of a permutation in $S_n$ using the exterior
 A natural choice is to take $M=R^n$ and to take the elements $m_i$ to be the standard basis vectors $e_i \in M$. However, how would you prove that $e_1 \ldots e_n \neq 0$? That is, why can't $e_1 \ldots e_n \in A_M$ be expressed as a sum of elements of the form $a(t\otimes t)b \in A_M$?
 Proving this directly seems to be quite difficult. However, a map to be considered in a next section will simplify things greatly.
 
-## Tensor product algebra
+## Tensor Product of Graded Algebras
 
-Before proceeding, it's important to define another notion, which is that of a tensor product of two graded algebras an an algebra. Suppose $A = \bigoplus_{n=0}^\infty A_n$ is a graded algebra. 
+Before proceeding, it's important to define another notion, which is that of a tensor product of two graded algebras an an algebra. That is, if $A,B$ are graded $R$-algebras, we already know that $A\otimes B$ is an $R$-module but we also want to add a structure of multiplication, so that it becomes an $R$-algebra. Since $A,B$ are algebras, they can be decomposed into a direct sum of submodules of homogeneous elements of differing degrees: $A = \bigoplus_{i=0}^\infty A_i$ and  $B = \bigoplus_{i=0}^\infty B_i$.
+
+The underlying set of the of the algebra will be the same as that of the tensor product. It decomposes into a direct sum
+
+$$
+\begin{align*}
+A \otimes B = (\bigoplus_{i=0}^\infty A_i) \otimes B = \bigoplus_{i=0}^\infty A_i \otimes B \\
+=  \bigoplus_{i=0}^\infty A_i \otimes (\bigoplus_{i=0}^\infty B_i) = \bigoplus_{i,j=0}^\infty A_i \otimes B_j
+\end{align*}
+$$
+
+Let's call $T= A \otimes B$ and $T_{i,j} = A_i \otimes B_j$. We define multiplication, which is a bilinear map $T \times T \to T$ on elements of the type $a_i\otimes b_j \in T_{i,j}$ and extend by linearity to all elements. We set
+
+$$
+(a_i \otimes b_j)(a_k \otimes b_l) :=(-1)^{kj} (a_ia_k \otimes b_j b_l)
+$$
+
+Thus we multiply the corresponding pairs in order (note that the multiplication in $T$ is not necessarily commutative) and crucially add a sign. The sign generally ensures that if the algebras $A,B$ are antisymmetric (a notion that we will not define here), the resulting algebra $T$ is also antisymmetric. The sign will also be crucial in our calculations going further. 
+
+Next, we prove that the multiplication so defined is associative. It's enough to verify it for triples of elements in $T_ij$. Thus suppose for $i = 1, 2,3$, we have $a_{j_i} \otimes b_{k_i} \in T_{j_i, k_i}$.
+
+Using the fact that $b_{k_1} b_{k_2} \in B_{k_1 + k_2}$, 
+
+$$
+\begin{align*}
+&((a_{j_1}\otimes b_{k_1})  (a_{j_2}\otimes b_{k_2})) (a_{j_3}\otimes b_{k_3}) = (-1)^{k_1j_2} (a_{j_1}a_{j_2} \otimes b_{k_1}b_{k_2}) (a_{j_3}\otimes b_{k_3}) \\
+= &(-1)^{k_1j_2} (-1)^{(k_1 + k_2)j_3 } (a_{j_1}a_{j_2}a_{j_3} \otimes b_{k_1}b_{k_2}b_{k_3}) \\
+= &(-1)^{k_1j_2 + k_1 j_3 + k_2 j_3} (a_{j_1}a_{j_2}a_{j_3} \otimes b_{k_1}b_{k_2}b_{k_3})
+\end{align*}
+$$
+
+meanwhile associating brackets the other way, we find
+
+$$
+\begin{align*}
+&(a_{j_1}\otimes b_{k_1})  ((a_{j_2}\otimes b_{k_2}) (a_{j_3}\otimes b_{k_3}) = (a_{j_1}\otimes b_{k_1})  ((-1)^{k_2j_3} a_{j_2} a_{j_3} \otimes b_{k_2} b_{k_3}) \\
+= & (-1)^{k_2j_3} (a_{j_1}\otimes b_{k_1}) (a_{j_2} a_{j_3} \otimes b_{k_2} b_{k_3}) \\
+= & (-1)^{k_2j_3} (-1)^{k_1 (j_2 + j_3)} (a_{j_1}a_{j_2}a_{j_3} \otimes b_{k_1}b_{k_2}b_{k_3}) \\
+= & (-1)^{k_2j_3 + k_1 j_2 + k_1 j_3} (a_{j_1}a_{j_2}a_{j_3} \otimes b_{k_1}b_{k_2}b_{k_3})
+\end{align*}
+$$
+
+which is equal to what was obtained above. Therefore the product is associative for terms of the form $T_{i,j}$, which are the generators of $T$, thus the product associative for all terms.
+
+Note that multiplying an element of $T_{i,j}$ by an element of $T_{k,l}$ yields an element of $T_{i+k, j+l}$. Thus there is a natural grading of $T$ given by 
+
+$$
+T_n = \bigoplus_{i+j = n} T_{i,j} = T_{0, n} \oplus \ldots \oplus T_{n, 0}
+$$
 
 ## The analyzing map
 
