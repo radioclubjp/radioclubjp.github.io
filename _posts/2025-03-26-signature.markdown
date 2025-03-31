@@ -232,13 +232,13 @@ Now the final part is almost obvious. When you switch the positions of two adjac
 
 # Determinants without the fundamental fact?
 
-This chapter presents the proof which is the reason for this post. The proof is based on Claude Chevalley's textbook "Fundamental Concepts in Algebra". The core idea is contained in the book but the author of this blog post has taken the liberty to modify and simplify it in order to make the relationships more direct and streamlined.
+This chapter presents the proof which is the reason for this post. The proof is based on Claude Chevalley's textbook "Fundamental Concepts in Algebra". The core idea is contained in the book but I have taken the liberty to modify and simplify it in order to make the relationships more direct and streamlined.
 
 We have already discussed the relationship between the determinant and the signature homomorphism. Each has a simple defining property, and the existence of one easily implies the existence of the other. We have seen the formula for the determinant in terms of the signature homomorphism and the formula for the signature homomorphism in terms of the determinant before.
 
 When first encountering the signature homomorphism, it's tempting to notice that it behaves much like the determinant and attempt to prove its existence and the fundamental fact using the determinant. However, one runs into an issue of circularity: in most presentations, determinant is defined (or, in some cases, proven to be well-defined) using the fundamental fact.
 
-The author of this post previously thought it was unavoidable that in a treatment of the determinant and the symmetric groups the fundamental fact must come logically prior and be proven in a technical, combinatorial way. However, Chevalley's textbook has shown that another way was possible. It is possible to develop a satisfactory theory of antisymmetry and determinants in a self-contained way and have the fundamental fact drop out naturally from the theory you develop. In fact, in Chevalley's textbook, the signature homomorphism is actually defined in terms of the determinant. Meanwhile, the determinant is defined in terms of certain algebra structures which we will describe in the following sections.
+I have previously thought it was unavoidable that in a treatment of the determinant and the symmetric groups the fundamental fact must come logically prior and be proven in a technical, combinatorial way. However, Chevalley's textbook has shown that another way was possible. It is possible to develop a satisfactory theory of antisymmetry and determinants in a self-contained way and have the fundamental fact drop out naturally from the theory you develop. In fact, in Chevalley's textbook, the signature homomorphism is actually defined in terms of the determinant. Meanwhile, the determinant is defined in terms of certain algebra structures which we will describe in the following sections.
 
 
 ## Algebras
@@ -247,7 +247,7 @@ For a commutative ring $R$ (for example, it could be the set of integers, $\math
 
 ## Tensor products
 
-In this section we will define and give reason to believe in some basic properties of tensor products. The approach taken in this section is not standard and reflect the tastes of the author. The reason for this divergence will be explained later. The reader already familiar with tensor products and their properties may safely skip this section as the relevance of the divergence from the standard presentation does not extend beyond the section.
+In this section we will define and give reason to believe in some basic properties of tensor products. The approach taken in this section is not standard and reflect my personal taste. The reason for this divergence will be explained later. The reader already familiar with tensor products and their properties may safely skip this section as the relevance of the divergence from the standard presentation does not extend beyond the section.
 
 Let $M,N$ be $R$-modules for a commutative ring $R$. Let $T$ be another $R$-module and consider a general bilinear (that is, linear in each argument map) $f: M \times N \to T$. That is, a function of two arguments $f(m,n)$ such that 
 
@@ -319,7 +319,7 @@ $$
 
 by seeing that the formal expressions that represent them evaluate to the same result for all bilinear maps.
 
-The three properties above are usually taken as part of the definition of the tensor product. However, the author feels that such a presentation somewhat obscures the purpose of the tensor product, which is to linearize bilinear maps, i.e. to make them into homomorphisms. Instead of starting with these formal properties of tensors, we start with their purpose at the core of the definition, which is to make bilinear maps into homomorphisms/linear maps, and derive the formal properties as a natural consequence. 
+The three properties above are usually taken as part of the definition of the tensor product. However, I feel that such a presentation somewhat obscures the purpose of the tensor product, which is to linearize bilinear maps, i.e. to make them into homomorphisms. Instead of starting with these formal properties of tensors, we start with their purpose at the core of the definition, which is to make bilinear maps into homomorphisms/linear maps, and derive the formal properties as a natural consequence. 
 
 A curious thing about the unusual approach to the tensor product that we presented is that it's **impredicative**. That means, in the definitions, it refers to itself. That is because it defines the tensor product in therms of all bilinear maps, while the map $\otimes: (m,n) \mapsto m \otimes n$ is a bilinear map, so it's one of the bilinear maps the definition refers to. This is not a problem in mathematics because the universe is assumed to be fixed, and the purpose of a definition is merely to delineate something that is already there, rather than be an act of creation. For more on predicativity and approaches to the foundations of mathematics which try to avoid it, a good reference is the article ["Predicativity"](https://math.stanford.edu/~feferman/papers/predicativity.pdf) by Solomon Feferman. 
 
