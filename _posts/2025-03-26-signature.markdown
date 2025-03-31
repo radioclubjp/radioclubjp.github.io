@@ -222,7 +222,7 @@ Another popular proof of the fundamental fact proceeds by counting inversions. W
 
 An **inversion** is a pair of boxes where the left label is a higher number than the right label. The quantity we will be concerned with is the parity of the total number of inversions of a permutation. 
 
-Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that it the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $\binom{5}{2} = \frac{5(5-1)}{2} = 20$ inversions, which is the maximal number of inversions possible for $5$ boxes.
+Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that it the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $\binom{5}{2} = \frac{5(5-1)}{2} = 10$ inversions, which is the maximal number of inversions possible for $5$ boxes.
 
 Now we claim that every transposition changes the parity of the number of inversions. The fundamental fact will then follow from it, since the number of inversions of a permutation is not dependent on the on the way you express it as a product of transpositions, and the parity of the number of inversions tells you whether the permutation can only be expressed as a product of an even number of transpositions or an odd number of transpositions.
 
@@ -467,4 +467,76 @@ $$
 
 We present a map which will give us a lot of insight into the exterior algebra and will allow us to see that that the product of basis elements as described above is nonzero
 
-The map is defined for an arbitrary $R$-module $M$ as follows. First consider the map $f: M \to M \otimes M$.
+Let $M$ be an arbitrary $R$-module. Denote by $E_M$ the exterior algebra on $M$. Let $T = E_M \otimes E_M$ given the graded algebra structure defined in the above section.
+
+ First consider the map $f: M \to E_M \otimes E_M$ defined by 
+
+ $$
+f(m) = 1 \otimes m + m \otimes 1
+ $$
+
+ Remembering the way the multiplication in our algebra $T$ was defined and noting that for $m \in M \subset E_M$, $m^2 = 0$ by definition of the exterior algebra, we find the curious property that
+
+ $$
+ \begin{align*}
+  &f(m)^2 = f(m)f(m) = (1 \otimes m + m \otimes 1)(1 \otimes m + m \otimes 1) \\
+= &(1 \otimes m)(1 \otimes m) + (1 \otimes m)(m \otimes 1) + (m \otimes 1)(1 \otimes m) + (m \otimes 1)(m \otimes 1) \\
+= &(-1)^{1 * 0 }1 \otimes m^2 + (-1)^{1*1} m\otimes m + (-1)^{0*0} m \otimes m + (-1)^{0 * 1} m^2 \otimes 1 \\
+= &-m \otimes m + m \otimes m = 0
+\end{align*}
+ $$
+ 
+ thus 
+
+ $$
+f(m)^2 = 0
+ $$
+
+ By the universal property of the tensor algebra, if $A_M$ denotes the tensor algebra of $M$, there exists an algebra homomorphism
+
+ $$
+\bar{f}: A_M \to E_M \otimes E_M
+ $$
+
+ which extends $f$ in the unique way, so that $\bar{f}\mid_M = f$. However, the curious property that $f(m)^2 = 0$ ensures that also $\bar{f}(m^2) = 0$ for all $m \in M \subset A_M$, thus $\bar{f}$ vanishes on the ideal $J$ used in the definition of the exterior algebra as a quotient of the tensor algebra. That means that $\bar{f}$ induces an algebra homomorphism
+
+ $$
+U: E_M \mapsto E_M \otimes E_M
+ $$
+
+If this sounds overly formal, you can simply think of $U$ as the unique algebra homomorphism from $E_M$ to $E_M \otimes E_M$ defined for $m \in M \subset E$ by
+
+$$
+U(m) = 1 \otimes m + m \otimes 1
+$$
+
+and extended to all of $E_M$ using the properties of homomorphisms. The preceding paragraph simply serves to justify the existence (i.e. the consistency) of such a homomorphism.
+
+The map $U$ is called the **analyzing map**. To see how it will be helpful, let's try to evaluate it at more complicated elements, say a product $m_1m_2 \in E$ of elements in $M$. We get
+
+
+$$
+\begin{align*}
+  & U(m_1m_2) = U(m_1)U(m_2)  &\text{since $U$ is a homomorphism} \\
+= & (1 \otimes m_1 + m_1 \otimes 1)(1 \otimes m_2 + m_2 \otimes 1) \\
+= & 1 \otimes m_1m_2 - m_2 \otimes m_1 + m_1 \otimes m_2  + m_1 m_2 \otimes 1
+\end{align*}
+$$
+
+In the resulting expression we can see that all terms belong to distinct components $T_{i,j} = E_i \otimes E_j$, with the exception of the two middle terms which both belong to $T_{1,1}$. However, in the terms in $T_{1,1}$, all terms are simple tensor products of elements of $M$, the alternating algebra structure is gone. 
+
+In general for $n$ terms $m_1 \ldots m_n$, we write $S_{1i} = 1 \otimes m_i$ and $S_{2i} = m_i \otimes 1$ so that $U(m_i) = S_{1i} + S_{2i}$. Then 
+
+$$
+\begin{align*}
+  & U(m_1 \ldots m_n) = U(m_1) \ldots U(m_n)\\
+= & (L_{11} + L_{21})\ldots (L_{1n} + L_{2n}) =  \sum_{\tau} \prod_{i=1}^n S_{\tau(i)i}
+\end{align*}
+$$
+
+where the sum is over all functions $\tau: [n] \to \\{1,2\\}$. However, if $L \subset [n]$ denotes the set of elements such that $\tau(i) = 1$ and $R \subset [n]$ denotes the complement in $[n]$, we find that
+
+$$
+\prod_{i=1}^n S_{\tau(i)i} = \pm (\prod_{i \in L} m_i) \otimes (\prod_{i \in R} m_i)
+$$
+
