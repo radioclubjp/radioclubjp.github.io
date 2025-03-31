@@ -45,10 +45,9 @@ We ignore everything about the factors themselves and only look at the number of
 
 Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
 
-\begin{equation}
+$$
 \rho(\sigma_1 \sigma_2) = \rho(\sigma_1) \rho(\sigma_2)
-\label{eq:signature-hom}
-\end{equation}
+$$
 
 ## Every permutation can be represented as a product of transpositions
 
@@ -222,7 +221,7 @@ Another popular proof of the fundamental fact proceeds by counting inversions. W
 
 An **inversion** is a pair of boxes where the left label is a higher number than the right label. The quantity we will be concerned with is the parity of the total number of inversions of a permutation. 
 
-Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that it the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $\binom{5}{2} = \frac{5(5-1)}{2} = 10$ inversions, which is the maximal number of inversions possible for $5$ boxes.
+Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that is the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $\binom{5}{2} = \frac{5(5-1)}{2} = 10$ inversions, which is the maximal number of inversions possible for $5$ boxes.
 
 Now we claim that every transposition changes the parity of the number of inversions. The fundamental fact will then follow from it, since the number of inversions of a permutation is not dependent on the on the way you express it as a product of transpositions, and the parity of the number of inversions tells you whether the permutation can only be expressed as a product of an even number of transpositions or an odd number of transpositions.
 
@@ -413,7 +412,7 @@ Proving this directly seems to be quite difficult. However, a map to be consider
 
 ## Tensor Product of Graded Algebras
 
-Before proceeding, it's important to define another notion, which is that of a tensor product of two graded algebras an an algebra. That is, if $A,B$ are graded $R$-algebras, we already know that $A\otimes B$ is an $R$-module but we also want to add a structure of multiplication, so that it becomes an $R$-algebra. Since $A,B$ are algebras, they can be decomposed into a direct sum of submodules of homogeneous elements of differing degrees: $A = \bigoplus_{i=0}^\infty A_i$ and  $B = \bigoplus_{i=0}^\infty B_i$.
+Before proceeding, it's important to define another notion, which is that of a tensor product of two graded algebras an algebra. That is, if $A,B$ are graded $R$-algebras, we already know that $A\otimes B$ is an $R$-module but we also want to add a structure of multiplication, so that it becomes an $R$-algebra. Since $A,B$ are algebras, they can be decomposed into a direct sum of submodules of homogeneous elements of differing degrees: $A = \bigoplus_{i=0}^\infty A_i$ and  $B = \bigoplus_{i=0}^\infty B_i$.
 
 The underlying set of the of the algebra will be the same as that of the tensor product. It decomposes into a direct sum
 
