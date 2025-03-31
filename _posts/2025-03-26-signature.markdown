@@ -630,7 +630,6 @@ That is, to calculate $U^{n+1}$, we first calculate $U^n$, which is a sum of ten
 Another way to formulate the recursive relation is by writing
 
 $$
-\eqdef{}
 U^{n+1} = (I \otimes U^n) \circ U
 $$
 
