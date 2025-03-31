@@ -718,3 +718,41 @@ e_1 \ldots e_n \neq 0
 $$
 
 which proves the fundamental fact. 
+
+
+### Summary and additional notes
+
+Our aim was to prove that $\pi = e_1 \ldots e_n \neq 0$ in $E_M$ for $M = R^n$. Instead of dealing with the complicated algebraic object $E_M$ directly, we applied the iterated analyzing map $U^{n-1} : E_M \to E_M^{\otimes n}$ to $\pi$ get tensor product terms consisting purely of elements of $E_M$, thus divorced from the complexities of $E_M$. Although not all terms of $U^{n-1}(\pi)$ had this form, the other terms fall into distinct direct sum components which were able to safely ignore in our calculations.
+
+Much like the study of natural numbers becomes easier by studying their factors, we studied elements in the exterior algebra by looking at their simpler cofactors through the analyzing map. The analogy and the term cofactors are more apt than it may initially seem: the iterated analyzing map outputted a sum of terms each of which is a distinct way to multiply $n$ elements in the exterior algebra to obtain our input. Naturally, some of the ways are quite simple and amenable to analysis.
+
+In a sense, we've traded the complexity of antisymmetry in favor of complexity of having multiple terms and multiple tensor factors. However, since analyzing multiple tensors factors and multiple terms are easier than analyzing the exterior algebra directly, the trade was favorable and we were able to obtain our result.
+
+What's nice about this is that all the tools used in the derivation are not specific technical tricks used for this specific problem but are very natural tools in algebra. The analyzing map $U$ for example is used to define the wedge product of two forms, by setting 
+
+$$
+\phi \wedge \psi := (\phi \otimes \psi) \circ U
+$$
+
+This makes the dual space $E_M^*$ of $E_M$ into an algebra. The identity is given by the form $\varepsilon : E_M \to R$ which is nonzero only on homogeneous elements of degree $0$ and sends $\varepsilon(1) = 1$. The multiplication $\wedge$ is seen to be an associative operation exactly because the analyzing map $U$ is coassociative as proven in an earlier section:
+
+$$
+\begin{align*}
+  & (\phi_1 \wedge \phi_2) \wedge \phi_3  \\
+= & (((\phi_1 \otimes \phi_2) \circ U ) \otimes \phi_3 )\circ U \\
+= & (\phi_1 \otimes \phi_2 \otimes \phi_3) \circ (U \otimes I) \circ U \\
+= &  (\phi_1 \otimes \phi_2 \otimes \phi_3) \circ (I \otimes U) \circ U \\
+= &  (\phi_1 \otimes (\phi_2 \otimes \phi_3 ) \circ U ) \circ U  \\
+= & \phi_1 \wedge (\phi_2 \wedge \phi_3) 
+\end{align*}
+$$
+
+The wedge product is extensively used in various fields of mathematics including differential geometry.
+
+We can also now easily prove the existence of the determinant satisfying the basic properties by defining
+
+$$
+\det(v_1, \ldots , v_n) := (e_1^* \otimes \ldots \otimes e_n^*) \circ U^{n-1} (v_1\ldots v_n) = (e_1^* \wedge \ldots \wedge e_n^*) (v_1 \ldots v_n)
+$$
+
+Thus we see that a satisfactory development of basic exterior algebra can be given which avoids technical combinatorial lemmas about permutations and avoids explicitly relying on combinatorial homomorphisms. Rather, the development stands on its own, and its many fruits include the fundamental fact.
