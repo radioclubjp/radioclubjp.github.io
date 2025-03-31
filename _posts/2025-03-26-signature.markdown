@@ -465,6 +465,7 @@ $$
 
 ## The analyzing map
 
+### Definition
 We present a map which will give us a lot of insight into the exterior algebra and will allow us to see that that the product of basis elements as described above is nonzero
 
 Let $M$ be an arbitrary $R$-module. Denote by $E_M$ the exterior algebra on $M$. Let $T = E_M \otimes E_M$ given the graded algebra structure defined in the above section.
@@ -512,8 +513,11 @@ $$
 
 and extended to all of $E_M$ using the properties of homomorphisms. The preceding paragraph simply serves to justify the existence (i.e. the consistency) of such a homomorphism.
 
-The map $U$ is called the **analyzing map**. To see how it will be helpful, let's try to evaluate it at more complicated elements, say a product $m_1m_2 \in E$ of elements in $M$. We get
+The map $U$ is called the **analyzing map**. 
 
+### Example evaluation
+
+To see it in action, let's try to evaluate it at more complicated elements, say a product $m_1m_2 \in E$ of elements in $M$. We get
 
 $$
 \begin{align*}
@@ -524,6 +528,8 @@ $$
 $$
 
 In the resulting expression we can see that all terms belong to distinct components $T_{i,j} = E_i \otimes E_j$, with the exception of the two middle terms which both belong to $T_{1,1}$. However, in the terms in $T_{1,1}$, all terms are simple tensor products of elements of $M$, the alternating algebra structure is gone. 
+
+### Evaluation at a product of n terms
 
 In general for $n$ terms $m_1 \ldots m_n$, we write $S_{1i} = m_i \otimes 1$ and $S_{2i} = 1 \otimes m_i$ so that $U(m_i) = S_{1i} + S_{2i}$. Then 
 
@@ -540,7 +546,7 @@ $$
 \prod_{i=1}^n S_{\tau(i)i} = (-1)^N (\prod_{i \in L} m_i) \otimes (\prod_{i \in R} m_i)
 $$
 
-In the above expression and the following expressions, all indexed products are ordered in an ascending order with respect to the indices. The sign $(-1)^N$ in the above expression is related to the way the factors $S_{1i}$ and $S_{2i}$ interleave. $N$ is exactly the number of pairs $i<j$ such that $i \in R$ and $j \in L$. To see this, first we note that
+In the above expression and the following expressions, all indexed products are ordered in an ascending order with respect to the indices. The sign $(-1)^N$ in the above expression is not necessary to understand because the knowledge of it will not be needed in the subsequent calculations. However for the sake of completeness we give an account of it. The sign related to the way the factors $S_{1i}$ and $S_{2i}$ interleave. $N$ is exactly the number of pairs $i<j$ such that $i \in R$ and $j \in L$. To see this, first we note that
 
 $$
 \begin{align*}
@@ -559,3 +565,139 @@ $$
 $$
 
 To get the product $\prod_{i=1}^n S_{\tau(i)i}$ in the form $\prod_{i\in L}S_{1i} \prod_{i\in R}S_{2i}$, we need to perform a series of swaps, so that all the factors $S_{1i}$ end up on the left of $S_{2j}$. We only need to swap adjacent factors of the form $S_{2j}S_{1i}$ and since $S_{2j}S_{1i} = - S_{1i}S_{2j}$, each such swap introduces a minus sign. There are as many such swaps to be done as there are pairs $i<j$ such that $i\in R$, $j \in L$, since the factors $S_{2i}, S_{1j}$ corresponding each such pair must eventually become adjacent and be swapped, and conversely each pair to be swapped corresponds to such a factor.
+
+### A coassociativity property
+
+The analyzing map satisfies a curious property that's similar in some ways to associativity and can be described as reversed associativity or coassociativity. To explain, consider an $R$-bilinear map $M \otimes M \to M$. Let $I: M \to M$ be the identity map. Then the associativity of $f$ may be stated by asserting the equality of two functions $M \otimes M \otimes M \to M$:
+
+$$
+f\circ (f \otimes I) = f \circ (I \otimes f)
+$$
+
+Evaluated at generators, this states that
+
+$$
+f(f(a\otimes b) \otimes c) = f(a \otimes f(b \otimes c))
+$$
+
+Note that we implicitly use the natural isomorphism $(M \otimes M) \otimes M \to M \otimes (M \otimes M)$.
+
+The dual property that the analyzing map $U$ satisfies is the equality of functions $E_M \to E_M \otimes E_M \otimes E_M$ going the other way:
+
+$$
+(U\otimes I)\circ U = (I \otimes U) \circ U
+$$
+
+Since the maps in question are algebra homomorphisms (with $E_M \otimes E_M \otimes E_M$ given the product algebra structure), it's enough to verify this relation on the generators $m \in M$ of the algebra $E_M$:
+
+$$
+\begin{align*}
+  & (U\otimes I)\circ U (m) = (U\otimes I)(m \otimes 1 + 1 \otimes m) = U(m) \otimes 1 + U(1) \otimes m \\
+= & (m \otimes 1 + 1 \otimes m) \otimes 1 + (1 \otimes 1) \otimes m = m \otimes 1 \otimes 1 + 1 \otimes m \otimes 1 + 1 \otimes 1 \otimes m
+\end{align*}
+$$
+
+similarly we find
+
+$$
+\begin{align*}
+  & (I\otimes U)\circ U (m) = (I\otimes U)(m \otimes 1 + 1 \otimes m) = m \otimes U(1) + 1 \otimes U(m) \\
+= & m \otimes (1 \otimes 1) + 1 \otimes (m \otimes 1 + 1 \otimes m) = m \otimes 1 \otimes 1 + 1 \otimes m \otimes 1 + 1 \otimes 1 \otimes m
+\end{align*}
+$$
+
+So we see that the maps agree on the generators of the algebras, thus they must be equal.
+
+### Iterated analyzing map
+
+Much like the associativity of multiplication makes product expressions like $abcd$ well defined without worrying about where to put the brackets, even though the product operation is binary, the dual associativity property described above lets us obtain an iterated map $U^n : E_M \to E_M^{\otimes n + 1}$ in a natural way. It is defined recursively as follows
+
+$$
+\begin{align*}
+U^0 &= I \\
+U^1 &= U \\
+U^{n+1} &= (I \otimes \ldots \otimes I \otimes U)\circ U^{n}
+\end{align*}
+$$
+
+That is, to calculate $U^{n+1}$, we first calculate $U^n$, which is a sum of tensors with $n+1$ factors, and to each term apply $U$ in the last factor. In fact, we could equally well apply it to any of the other $n$ factors and get the same result by the dual associativity property described above. It does not matter which factor we apply the map $U$ to, as long as we do so consistently for all terms.
+
+### Analyzing the exterior product of n basis elements
+
+From now on $M = R^n$ is the free and $e_i \in M$ are the standard basis elements of $M$, where $M$ is regarded as a subset of $E_M$. At this point all the pieces are ready for us to show why $\pi = e_1 \ldots e_n \neq 0 \in E_M$. We do that by applying the iterated analyzing map $U^n$ to $\pi$.
+
+First, note that every element $x \in M$ can be written as $x = \sum_{i=1}^n a_i e_i$. Since $M$ is a direct summand $E_{M,1}$ of $E_M$ in the grading $E_M = \bigoplus_{i=0}^\infty E_i$,  each $x \in E_M$ can be written as
+
+$$
+x = x' + m = x' + \sum_{i=1}^n a_i e_i
+$$
+
+where $m \in M$, $x' \in \bigoplus_{i\neq1} E_i$ and $m = \sum_{i=1}^n a_i e_i$.
+
+For each $i\in [n]$ define a linear form $e_i^* : E_M \to R$ by 
+
+$$e_i^*(x) = a_i$$
+
+where $x$ and $a_i$ are as above.
+
+
+Consider the $n$-linear form $t: E^{\otimes n} \to R$ given by $e_1^* \otimes \ldots \otimes e_n^*$, i.e. defined on the generators $x_1 \otimes \ldots \otimes x_n \in  E^{\otimes n}$ by 
+
+$$
+t(x_1 \otimes \ldots \otimes x_n) = e_1^*(x_1) \ldots e_n^*(x_n)
+$$
+
+Note that 
+
+$$
+t(e_1 \otimes \ldots \otimes e_n) = e_1^*(e_1) \ldots e_n^*(e_n) = 1
+$$
+
+We evaluate $t$ on $U^n(e_1\ldots e_n)$.
+
+Recall that $U(e_1 \ldots e_n)$ can be decomposed as as sum over all subsets $S \subset [n]$ of distinct elements of the following form
+
+$$
+\pm \prod_{i\in S} e_i \otimes \prod_{i\notin S} e_i 
+$$
+
+$1\leq i \leq n$ define $t_i = e_i^* \otimes \ldots \otimes e_n^*$. Thus we find that
+
+$$
+\begin{align*}
+  & t(U^{n-1}(e_1 \ldots e_n)) = t_1((I \otimes U^{n-2}) \circ U(e_1 \ldots e_n)) \\
+= & t_1((I \otimes U^{n-2})( \sum_{S \subset [n]}  \pm \prod_{i\in S} e_i \otimes \prod_{i\notin S} e_i ) \\
+= & t_1(\sum_{S \subset [n]} \pm \prod_{i\in S} e_i \otimes  U^{n-2}(\prod_{i\notin S} e_i) ) \\
+= & \sum_{S \subset [n]} \pm e_1^*(\prod_{i\in S} e_i)  t_2 (U^{n-2}(\prod_{i\notin S} e_i))
+\end{align*}
+$$
+
+Note that  $e_1^*(\pm (\prod_{i\in S} e_i)) = 0$ for all terms except one: 
+
+each $e_i^* $ vanishes on all homogeneous terms of degree $\neq 1$, and it $e_i^*(e_j) = 0$ for $i \neq j$. Thus the only term left in the sum above is when $S = \\{ 1 \\}$, so the whole sum is equal to
+
+$$
+\begin{align*}
+\pm e_1^*(e_1)  t_2 (U^{n-2}(\prod_{i\notin \\{1\\}} e_i)) = \pm t_2 (U^{n-2}(e_2 \ldots e_n))
+\end{align*}
+$$
+
+Applying the same reasoning again $n-1$ times we find that
+
+$$
+t(U^n(e_1\ldots e_n)) = \pm 1 \neq 0
+$$
+
+In particular, 
+
+$$
+\pm e_1^* (e_1) \ldots e_n^*(e_n) = \pm 1 \neq 0
+$$
+
+Thus it follows that
+
+$$
+e_1 \ldots e_n = \neq 0
+$$
+
+which proves the fundamental fact. 
