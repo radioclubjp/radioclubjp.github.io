@@ -241,6 +241,11 @@ When first encountering the signature homomorphism, it's tempting to notice that
 
 The author of this post previously thought it was unavoidable that in a treatment of the determinant and the symmetric groups the fundamental fact must come logically prior and be proven in a technical, combinatorial way. However, Chevalley's textbook has shown that another way was possible. It is possible to develop a satisfactory theory of antisymmetry and determinants in a self-contained way and have the fundamental fact drop out naturally from the theory you develop. In fact, in Chevalley's textbook, the signature homomorphism is actually defined in terms of the determinant. Meanwhile, the determinant is defined in terms of certain algebra structures which we will describe in the following sections.
 
+
+## Algebras
+
+For a commutative ring $R$ (for example, it could be the set of integers, $\mathbb{Z}$, rational numbers $\mathbb{Q}$, the real numbers $\mathbb{R}$ or the complex numbers $\mathbb{C}$), we say that $A$ together a ring homomorphism $R \in A$ is an $R$-algebra. We require that the multiplication in $A$ be associative but not necessarily commutative, even though we require that the ring $R$ is commutative.
+
 ## Tensor products
 
 In this section we will define and give reason to believe in some basic properties of tensor products. The approach taken in this section is not standard and reflect the tastes of the author. The reason for this divergence will be explained later. The reader already familiar with tensor products and their properties may safely skip this section as the relevance of the divergence from the standard presentation does not extend beyond the section.
