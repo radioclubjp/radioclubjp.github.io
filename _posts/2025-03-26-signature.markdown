@@ -58,9 +58,36 @@ To see that each permutation can be expressed as a product of transpositions, co
 
 In the above section we gave a method to express a permutation as a product of transpositions. But that is by no means the only way to do so. Consider, for example, the fact that the identity permutation is expressible as a product of two transpositions $1 = (12)(12)$ as well as the product of zero transpositions, which is the identity. Here $(a \  b)$ for $a\neq b$ stands for the transposition which maps $a\to b$ and $b\to a$ and leaves other numbers fixed.
 
-The mystery and the fundamental fact that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We call this claim the **fundamental fact** in the context of this essay though that's not a standard name.
+The mystery and the **fundamental fact** that this essay is concerned with, is the fact that no matter how you express a permutation as a product of transpositions, the parity of the number of factors doesn't vary. That's what makes our definition \eqref{eq:signature-def} well-defined. For if it were possible to express a permutation $\sigma$ both as a product of an even number of transpositions and as an odd number of transpositions, $\rho(\sigma)$ would have to equal both $-1$ and $1$, which is impossible. We henceforth will refer to this claim freely as the fundamental fact.
 
-Perhaps the reader immediately grasps why the fundamental fact must necessarily be true. If that's the case, then the author should not recommend they continue reading this essay, since it consists of an attempt to grapple with how unintuitive it is and to try to make it a little bit more intuitive, as well as explore different ways to prove the fundamental fact. 
+Another way to rephrase the fundamental fact is by asserting that the identity permutation cannot be expressed as a product of an odd number of transposition. Indeed, it implies the fundamental fact since if a permutation can be expressed as both an even and an odd number of transpositions
+
+$$
+\begin{align*}
+\sigma &= (a_1b_1)\ldots(a_kb_k) \\
+\sigma &= (c_1d_1)\ldots (c_ld_l)
+\end{align*}
+$$
+
+then the inverse of $\sigma$ is the same product of the permutations but in reverse:
+
+$$
+\sigma^{-1} = (c_ld_l)\ldots (c_1d_1)
+$$
+
+since the transpositions are their own inverses and thus cancel out in pairs in the middle:
+
+$$
+(c_1d_1)\ldots \underbrace{(c_ld_l)(c_ld_l)}_{=1}\ldots (c_1d_1) = (c_1d_1)\ldots (c_{l-1}d_{l-1}) 1  (c_{l-1}d_{l-1}) \ldots (c_1d_1) = \ldots = 1
+$$
+
+So that we can express the identity permutation using a product of an even and an odd number of transpositions (resulting in an odd number of transpositions)
+
+$$
+1 = \sigma \sigma^{-1} = (a_1b_1)\ldots (a_kb_k) (c_ld_l)\ldots (c_1d_1)
+$$
+
+which would be impossible if the identity could be expressed as a product of an odd number of transpositions. Conversely, if the identity can be expressed as a product of an odd number of transpositions, since it also can be expressed as a product of an even number of transpositions (an empty product of no transpositions: 0 is even), it would contradict the fundamental fact. Thus we find a simpler statement equivalent to the fundamental fact.
 
 # A graph theoretic interpretation of the fundamental fact
 
@@ -195,7 +222,7 @@ Another popular proof of the fundamental fact proceeds by counting inversions. W
 
 An **inversion** is a pair of boxes where the left label is a higher number than the right label. The quantity we will be concerned with is the parity of the total number of inversions of a permutation. 
 
-Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that it the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $5 * (5-1) = 20$ inversions, which is the maximal number of inversions possible for $5$ boxes.
+Let's consider some examples. Suppose the boxes are arranged as 1,2,3,4,5, which corresponds to the identity permutation. In this permutation, there are no inversions, since in every pair, the left box has a lower number than the right box. In the permutation 2,1,3,4,5, there is exactly one inversion, that it the pair (1,2). The box on the left (box 2) has a higher label than the box on the right (box 1). Another example: consider the permutation 5,4,3,2,1. In this permutation, every pair of boxes is an inversion, because all the boxes are arranged in the opposite way than their labels. So in total there are $\binom{5}{2} = \frac{5(5-1)}{2} = 20$ inversions, which is the maximal number of inversions possible for $5$ boxes.
 
 Now we claim that every transposition changes the parity of the number of inversions. The fundamental fact will then follow from it, since the number of inversions of a permutation is not dependent on the on the way you express it as a product of transpositions, and the parity of the number of inversions tells you whether the permutation can only be expressed as a product of an even number of transpositions or an odd number of transpositions.
 
