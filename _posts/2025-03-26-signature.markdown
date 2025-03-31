@@ -627,6 +627,25 @@ $$
 
 That is, to calculate $U^{n+1}$, we first calculate $U^n$, which is a sum of tensors with $n+1$ factors, and to each term apply $U$ in the last factor. In fact, we could equally well apply it to any of the other $n$ factors and get the same result by the dual associativity property described above. It does not matter which factor we apply the map $U$ to, as long as we do so consistently for all terms.
 
+Another way to formulate the recursive relation is by writing
+
+$$
+\eqdef{}
+U^{n+1} = (I \otimes U^n) \circ U
+$$
+
+Indeed, this is seen to be equivalent by induction, by substituting the expression $U^{n} = (I \otimes \ldots \otimes I \otimes U)\circ U^{n-1}$ above:
+
+$$
+\begin{align*}
+& (I \otimes U^n) \circ U \\
+=  & (I \otimes ((I \otimes \ldots \otimes I \otimes U)\circ U^{n-1})) \circ U \\
+= & (I \otimes (I \otimes \ldots \otimes I \otimes U)) \circ (I \otimes U^{n-1}) \circ U \\
+= & (I \otimes \ldots \otimes U) \circ \underbrace{((I \otimes U^{n-1}) \circ U)}_{=U^n} \\
+= & (I \otimes \ldots \otimes U) \circ U_n
+\end{align*}
+$$
+
 ### Analyzing the exterior product of n basis elements
 
 From now on $M = R^n$ is the free and $e_i \in M$ are the standard basis elements of $M$, where $M$ is regarded as a subset of $E_M$. At this point all the pieces are ready for us to show why $\pi = e_1 \ldots e_n \neq 0 \in E_M$. We do that by applying the iterated analyzing map $U^{n-1}$ to $\pi$ to obtain an element of $E^{\otimes n}$ which we will show is nonzero.
