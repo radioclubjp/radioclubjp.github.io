@@ -244,7 +244,7 @@ The author of this post previously thought it was unavoidable that in a treatmen
 
 ## Algebras
 
-For a commutative ring $R$ (for example, it could be the set of integers, $\mathbb{Z}$, rational numbers $\mathbb{Q}$, the real numbers $\mathbb{R}$ or the complex numbers $\mathbb{C}$), we say that $A$ together a ring homomorphism $R \in A$ is an $R$-algebra. We require that the multiplication in $A$ be associative but not necessarily commutative, even though we require that the ring $R$ is commutative.
+For a commutative ring $R$ (for example, it could be the set of integers, $\mathbb{Z}$, rational numbers $\mathbb{Q}$, the real numbers $\mathbb{R}$ or the complex numbers $\mathbb{C}$), we say that an $R$-module $A$ is an algebra if it has a $R$-bilinear map $A \times A \to A$, which we call the multiplication on $A$, which is associative. We also require $A$ to contain an element $1 \in A$ that acts as a unit on both sides for the multiplication. Note that we do not require the multiplication on $A$ to be commutative, even though we require that the ring $R$ is commutative.
 
 ## Tensor products
 
