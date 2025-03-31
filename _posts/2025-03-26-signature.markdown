@@ -566,6 +566,12 @@ $$
 
 To get the product $\prod_{i=1}^n S_{\tau(i)i}$ in the form $\prod_{i\in L}S_{1i} \prod_{i\in R}S_{2i}$, we need to perform a series of swaps, so that all the factors $S_{1i}$ end up on the left of $S_{2j}$. We only need to swap adjacent factors of the form $S_{2j}S_{1i}$ and since $S_{2j}S_{1i} = - S_{1i}S_{2j}$, each such swap introduces a minus sign. There are as many such swaps to be done as there are pairs $i<j$ such that $i\in R$, $j \in L$, since the factors $S_{2i}, S_{1j}$ corresponding each such pair must eventually become adjacent and be swapped, and conversely each pair to be swapped corresponds to such a factor.
 
+Putting it all together 
+
+$$
+U(m_1 \ldots m_n) = \sum_{L \subset [n], R = [n] \setminus L} \pm \prod_{i\in L}m_i \otimes \prod_{i\in R}m_i
+$$
+
 ### A coassociativity property
 
 The analyzing map satisfies a curious property that's similar in some ways to associativity and can be described as reversed associativity or coassociativity. To explain, consider an $R$-bilinear map $M \otimes M \to M$. Let $I: M \to M$ be the identity map. Then the associativity of $f$ may be stated by asserting the equality of two functions $M \otimes M \otimes M \to M$:
@@ -610,7 +616,7 @@ So we see that the maps agree on the generators of the algebras, thus they must 
 
 ### Iterated analyzing map
 
-Much like the associativity of multiplication makes product expressions like $abcd$ well defined without worrying about where to put the brackets, even though the product operation is binary, the dual associativity property described above lets us obtain an iterated map $U^n : E_M \to E_M^{\otimes n + 1}$ in a natural way. It is defined recursively as follows
+Much like the associativity of multiplication ensures that product expressions like $abcd$ well defined without worrying about where to put the brackets, even though the product operation is binary, the dual associativity property described above lets us obtain an iterated map $U^n : E_M \to E_M^{\otimes n + 1}$ in a natural way. It is defined recursively as follows
 
 $$
 \begin{align*}
@@ -624,7 +630,7 @@ That is, to calculate $U^{n+1}$, we first calculate $U^n$, which is a sum of ten
 
 ### Analyzing the exterior product of n basis elements
 
-From now on $M = R^n$ is the free and $e_i \in M$ are the standard basis elements of $M$, where $M$ is regarded as a subset of $E_M$. At this point all the pieces are ready for us to show why $\pi = e_1 \ldots e_n \neq 0 \in E_M$. We do that by applying the iterated analyzing map $U^n$ to $\pi$.
+From now on $M = R^n$ is the free and $e_i \in M$ are the standard basis elements of $M$, where $M$ is regarded as a subset of $E_M$. At this point all the pieces are ready for us to show why $\pi = e_1 \ldots e_n \neq 0 \in E_M$. We do that by applying the iterated analyzing map $U^{n-1}$ to $\pi$ to obtain an element of $E^{\otimes n}$ which we will show is nonzero.
 
 First, note that every element $x \in M$ can be written as $x = \sum_{i=1}^n a_i e_i$. Since $M$ is a direct summand $E_{M,1}$ of $E_M$ in the grading $E_M = \bigoplus_{i=0}^\infty E_i$,  each $x \in E_M$ can be written as
 
@@ -653,7 +659,7 @@ $$
 t(e_1 \otimes \ldots \otimes e_n) = e_1^*(e_1) \ldots e_n^*(e_n) = 1
 $$
 
-We evaluate $t$ on $U^n(e_1\ldots e_n)$.
+We evaluate $t$ on $U^{n-1}(e_1\ldots e_n)$.
 
 Recall that $U(e_1 \ldots e_n)$ can be decomposed as as sum over all subsets $S \subset [n]$ of distinct elements of the following form
 
@@ -661,7 +667,7 @@ $$
 \pm \prod_{i\in S} e_i \otimes \prod_{i\notin S} e_i 
 $$
 
-$1\leq i \leq n$ define $t_i = e_i^* \otimes \ldots \otimes e_n^*$. Thus we find that
+$1\leq k \leq n$ define $t_k = e_k^* \otimes \ldots \otimes e_n^*$. Thus we find that
 
 $$
 \begin{align*}
@@ -674,7 +680,7 @@ $$
 
 Note that  $e_1^*(\pm (\prod_{i\in S} e_i)) = 0$ for all terms except one: 
 
-each $e_i^* $ vanishes on all homogeneous terms of degree $\neq 1$, and it $e_i^*(e_j) = 0$ for $i \neq j$. Thus the only term left in the sum above is when $S = \\{ 1 \\}$, so the whole sum is equal to
+it vanishes for all homogeneous terms of degree $\neq 1$ in $E_M$, and among the terms of degree $1$, $e_1^*(e_j) = 0$ for $j \neq 1$ by by definition. Thus the only term left in the sum above is when $S = \\{ 1 \\}$, so the whole sum is equal to
 
 $$
 \begin{align*}
@@ -685,19 +691,13 @@ $$
 Applying the same reasoning again $n-1$ times we find that
 
 $$
-t(U^n(e_1\ldots e_n)) = \pm 1 \neq 0
-$$
-
-In particular, 
-
-$$
-\pm e_1^* (e_1) \ldots e_n^*(e_n) = \pm 1 \neq 0
+t(U^{n-1}(e_1\ldots e_n)) = \pm 1 \neq 0
 $$
 
 Thus it follows that
 
 $$
-e_1 \ldots e_n = \neq 0
+e_1 \ldots e_n \neq 0
 $$
 
 which proves the fundamental fact. 
