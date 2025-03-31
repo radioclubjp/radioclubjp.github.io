@@ -633,15 +633,17 @@ $$
 U^{n+1} = (I \otimes U^n) \circ U
 $$
 
-Indeed, this is seen to be equivalent by induction, by substituting the expression $U^{n} = (I \otimes \ldots \otimes I \otimes U)\circ U^{n-1}$ above:
+Indeed, this is seen to be equivalent by induction:
+
+Assume the inductive hypothesis that $U^{n} = (I \otimes U^{n-1}) \circ U$. By substituting the definition of $U^{n+1}$ we find that:
 
 $$
 \begin{align*}
-& (I \otimes U^n) \circ U \\
-=  & (I \otimes ((I \otimes \ldots \otimes I \otimes U)\circ U^{n-1})) \circ U \\
+& U^{n+1} := (I \otimes \ldots \otimes U) \circ U^n \\
+= & (I \otimes \ldots \otimes I  \otimes U) \circ (I \otimes U^{n-1}) \circ U  \quad \text{by inductive hypothesis} \\
 = & (I \otimes (I \otimes \ldots \otimes I \otimes U)) \circ (I \otimes U^{n-1}) \circ U \\
-= & (I \otimes \ldots \otimes U) \circ \underbrace{((I \otimes U^{n-1}) \circ U)}_{=U^n} \\
-= & (I \otimes \ldots \otimes U) \circ U_n
+=  & (I \otimes ((I \otimes \ldots \otimes I \otimes U)\circ U^{n-1})) \circ U \\
+& (I \otimes U^n) \circ U \\
 \end{align*}
 $$
 
