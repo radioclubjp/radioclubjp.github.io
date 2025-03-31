@@ -540,3 +540,4 @@ $$
 \prod_{i=1}^n S_{\tau(i)i} = \pm (\prod_{i \in L} m_i) \otimes (\prod_{i \in R} m_i)
 $$
 
+The sign $\pm$ in the above expression is related to the way the factors $L_{1i}$ and $L_{2i}$ interleave. It's $1$ if and only if there is an even number of pairs $i<j$ such that $i \in R$ and $j \in L$. This may be proven by induction. However, we will not provide a proof since this fact is unimportant in the following.
