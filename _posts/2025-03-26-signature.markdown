@@ -74,11 +74,7 @@ $$
 \sigma^{-1} = (c_ld_l)\ldots (c_1d_1)
 $$
 
-since the transpositions are their own inverses and thus cancel out in pairs in the middle:
-
-$$
-(c_1d_1)\ldots \underbrace{(c_ld_l)(c_ld_l)}_{=1}\ldots (c_1d_1) = (c_1d_1)\ldots (c_{l-1}d_{l-1}) 1  (c_{l-1}d_{l-1}) \ldots (c_1d_1) = \ldots = 1
-$$
+since to reverse a sequence of transpositions it's enough to perform the same transpositions in reverse order.
 
 So that we can express the identity permutation using a product of an even and an odd number of transpositions (resulting in an odd number of transpositions)
 
