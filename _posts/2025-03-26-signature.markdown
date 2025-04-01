@@ -535,13 +535,15 @@ $$
 \end{align*}
 $$
 
-where the sum is over all functions $\tau: [n] \to \\{1,2\\}$. However, if $L \subset [n]$ denotes the set of elements such that $\tau(i) = 1$ and $R \subset [n]$ denotes the complement in $[n]$, we find that
+where the sum is over all functions $\tau: [n] \to \\{1,2\\}$. However, if $L \subset [n]$ denotes the set of elements such that $\tau(i) = 1$ and $R \subset [n]$ denotes the complement in $[n]$, we find that for a suitable $N$, 
 
 $$
 \prod_{i=1}^n S_{\tau(i)i} = (-1)^N (\prod_{i \in L} m_i) \otimes (\prod_{i \in R} m_i)
 $$
 
-In the above expression and the following expressions, all indexed products are ordered in an ascending order with respect to the indices. The sign $(-1)^N$ in the above expression is not necessary to understand because the knowledge of it will not be needed in the subsequent calculations. However for the sake of completeness we give an account of it. The sign related to the way the factors $S_{1i}$ and $S_{2i}$ interleave. $N$ is exactly the number of pairs $i<j$ such that $i \in R$ and $j \in L$. To see this, first we note that
+All indexed products are ordered in an ascending order with respect to the indices. The precise sign $(-1)^N$ in the above expression is not necessary to understand in later sections. However for the sake of completeness we give an account of it. The reader might want to skip this explanation.
+
+The sign $(-1)^N$ is related to the way the factors $S_{1i}$ and $S_{2i}$ interleave. $N$ is exactly the number of pairs $i<j$ such that $i \in R$ and $j \in L$. To see this, first we note that
 
 $$
 \begin{align*}
