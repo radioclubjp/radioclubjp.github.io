@@ -43,7 +43,7 @@ It is defined as follows. Suppose you have a permutation $\sigma \in S_n$. Then 
 
 We ignore everything about the factors themselves and only look at the number of them. More precisely, we look at the parity of the number of factors.
 
-Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for distinct permutations $\sigma_1, \sigma_2 \in S_n$, 
+Besides being a function, the signature homomorphism $\rho$ also has the special property that it's a homomorphism. The property is stated as follows: for any permutations $\sigma_1, \sigma_2 \in S_n$, 
 
 $$
 \rho(\sigma_1 \sigma_2) = \rho(\sigma_1) \rho(\sigma_2)
