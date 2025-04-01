@@ -74,7 +74,7 @@ $$
 \sigma^{-1} = (c_ld_l)\ldots (c_1d_1)
 $$
 
-since to reverse a sequence of transpositions it's enough to perform the same transpositions in reverse order.
+This is because to reverse a transposition it's enough to perform the same transposition again. Hence to reverse a sequence of transpositions it's enough to perform the same transpositions in reverse order.
 
 So that we can express the identity permutation using a product of an even and an odd number of transpositions (resulting in an odd number of transpositions)
 
